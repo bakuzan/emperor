@@ -1,0 +1,28 @@
+$tyrian-purple: #66023c;
+$twilight-lavender: #8a496b;
+$brilliant-lavender: #f4bbff;
+
+.theme--light {
+  --background-colour: #f1f1f1;
+  --text-colour: #2f2f2f;
+
+  --primary-colour: #{$tyrian-purple};
+  // --primary-contrast: #fff;
+
+  --alt-colour: #{$brilliant-lavender};
+}
+
+.theme--dark {
+  --background-colour: #2f2f2f;
+  --text-colour: #f2f2f2;
+
+  --primary-colour: #fff;
+  // --primary-contrast: $tyrian-purple;
+
+  --alt-colour: #{$twilight-lavender};
+}
+
+.theme {
+  background-color: var(--background-colour);
+  color: var(--text-colour);
+}
