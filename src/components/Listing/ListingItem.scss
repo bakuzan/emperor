@@ -3,20 +3,24 @@
 
 .emperor {
   &__group-cell {
-    border: none;
+    // border: none;
     max-width: 1.45rem;
+    padding-right: 0;
     vertical-align: middle;
+
+    background-color: var(--primary-colour);
+    border-color: var(--primary-colour);
+    border-top-color: var(--table-cell-border-colour);
+    color: var(--primary-contrast);
 
     @include respondToAll((xxs, xs)) {
       max-width: 100%;
 
       &:not(.emperor__group-cell--visible) {
+        background-color: initial;
+        border: none;
+        color: initial;
         padding: 5px;
-      }
-
-      &--visible {
-        background-color: var(--primary-colour);
-        color: var(--primary-contrast);
       }
     }
   }

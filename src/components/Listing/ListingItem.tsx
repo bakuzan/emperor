@@ -6,6 +6,7 @@ import Img from 'gatsby-image';
 import { Emperor } from '@/interfaces/Emperor';
 import { rhythm } from '@/utils/typography';
 import NewTabLink from '@/components/NewTabLink';
+import { displayReignLength } from '@/utils/displayReignLength';
 
 export interface ListingItemProps {
   data: Emperor;
@@ -48,7 +49,9 @@ export default function ListingItem({
       </td>
       <td column-title="Reign Start">{data.reignStart}</td>
       <td column-title="Reign End">{data.reignEnd}</td>
-      <td column-title="Reign Length">put years here</td>
+      <td column-title="Reign Length">
+        {displayReignLength(data.reignLengthInDays)}
+      </td>
     </tr>
   );
 }

@@ -10,4 +10,5 @@ export interface Emperor {
   house: string;
   reignStart: string;
   reignEnd: string;
+  reignLengthInDays: number;
 }

@@ -6,9 +6,9 @@
     "house": "Julio-Claudian",
     "dateOfBirth": "23 September 63 BC",
     "birthplace": "",
-    "reignStart": "16 Janurary 27 BC",
-    "reignEnd": "19 August AD 14",
-    "dateOfDeath": "19 August AD 14",
+    "reignStart": "16 January 27 BC",
+    "reignEnd": "19 August 14 AD",
+    "dateOfDeath": "19 August 14 AD",
     "deathplace": ""
   },
   {
@@ -20,7 +20,7 @@
     "birthplace": "",
     "reignStart": "18 September 14 AD",
     "reignEnd": "16 March 37 AD",
-    "dateOfDeath": "16 March AD 37",
+    "dateOfDeath": "16 March 37 AD",
     "deathplace": ""
   }
 ]

@@ -1,5 +1,6 @@
 td,
 th {
+  border: none;
   vertical-align: top;
 }
 
@@ -35,7 +36,7 @@ th {
   td {
     /* Behave  like a "row" */
     border: none;
-    border-bottom: 1px solid var(--table-cell-border-colour);
+    // border-bottom: 1px solid var(--table-cell-border-colour);
     position: relative;
     padding-left: 50%;
   }

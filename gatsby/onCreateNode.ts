@@ -1,6 +1,8 @@
 import { GatsbyNode } from 'gatsby';
 import { createRemoteFileNode } from 'gatsby-source-filesystem';
 
+import calculateReignLength from './utils/calculateReignLength';
+
 export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
   node,
   actions,
@@ -12,6 +14,8 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
   }
 
   const { createNode } = actions;
+
+  const nodeItem = node as any;
   const nodeImage = node.image as string;
 
   const image = await createRemoteFileNode({
@@ -24,6 +28,11 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
   });
 
   if (image) {
-    (node as any).image___NODE = image.id;
+    nodeItem.image___NODE = image.id;
   }
+
+  nodeItem.reignLengthInDays = calculateReignLength(
+    nodeItem.reignStart,
+    nodeItem.reignEnd
+  );
 };

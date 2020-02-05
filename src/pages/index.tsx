@@ -52,6 +52,7 @@ export const query = graphql`
         house
         reignStart
         reignEnd
+        reignLengthInDays
         birthplace
       }
     }
