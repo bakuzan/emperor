@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "Augustus",
+    "name": "Augustus",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Statue-Augustus.jpg/220px-Statue-Augustus.jpg",
+    "house": "Julio-Claudian",
+    "dateOfBirth": "23 September 63 BC",
+    "birthplace": "",
+    "reignStart": "16 Janurary 27 BC",
+    "reignEnd": "19 August AD 14",
+    "dateOfDeath": "19 August AD 14",
+    "deathplace": ""
+  },
+  {
+    "slug": "Tiberius",
+    "name": "Tiberius",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Tiberius%2C_Romisch-Germanisches_Museum%2C_Cologne_%288115606671%29.jpg/250px-Tiberius%2C_Romisch-Germanisches_Museum%2C_Cologne_%288115606671%29.jpg",
+    "house": "Julio-Claudian",
+    "dateOfBirth": "16 November 42 BC",
+    "birthplace": "",
+    "reignStart": "18 September 14 AD",
+    "reignEnd": "16 March 37 AD",
+    "dateOfDeath": "16 March AD 37",
+    "deathplace": ""
+  }
+]

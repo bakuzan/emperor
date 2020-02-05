@@ -1,0 +1,34 @@
+@import '~meiko/styles/_variables.scss';
+@import '~meiko/styles/_mixins.scss';
+
+.emperor {
+  &__group-cell {
+    border: none;
+    max-width: 1.45rem;
+    vertical-align: middle;
+
+    @include respondToAll((xxs, xs)) {
+      max-width: 100%;
+
+      &:not(.emperor__group-cell--visible) {
+        padding: 5px;
+      }
+
+      &--visible {
+        background-color: var(--primary-colour);
+        color: var(--primary-contrast);
+      }
+    }
+  }
+
+  &__group {
+    display: flex;
+    justify-content: center;
+    transform: rotate(270deg);
+    white-space: nowrap;
+
+    @include respondToAll((xxs, xs)) {
+      transform: rotate(0deg);
+    }
+  }
+}

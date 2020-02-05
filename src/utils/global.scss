@@ -7,17 +7,17 @@ $brilliant-lavender: #f4bbff;
   --text-colour: #2f2f2f;
 
   --primary-colour: #{$tyrian-purple};
-  // --primary-contrast: #fff;
+  --primary-contrast: #fff;
 
   --alt-colour: #{$brilliant-lavender};
 }
 
 .theme--dark {
-  --background-colour: #2f2f2f;
+  --background-colour: #282c35;
   --text-colour: #f2f2f2;
 
   --primary-colour: #fff;
-  // --primary-contrast: $tyrian-purple;
+  --primary-contrast: #{$tyrian-purple};
 
   --alt-colour: #{$twilight-lavender};
 }
@@ -25,4 +25,7 @@ $brilliant-lavender: #f4bbff;
 .theme {
   background-color: var(--background-colour);
   color: var(--text-colour);
+
+  --table-border-colour: var(--alt-colour);
+  --table-cell-border-colour: var(--primary-colour);
 }

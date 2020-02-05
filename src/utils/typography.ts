@@ -15,6 +15,21 @@ FairyGates.overrideThemeStyles = () => ({
   },
   [`a:focus, a:hover`]: {
     boxShadow: `inset 0 -1.2em 0 var(--alt-colour, #ddd)`
+  },
+  'td,th': {
+    padding: typography.rhythm(1 / 2),
+    borderColor: `var(--table-border-colour)`
+  },
+  '@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px)': {
+    tr: {
+      marginBottom: typography.rhythm(1 / 4)
+    },
+    'th, th:first-child': {
+      padding: typography.rhythm(1 / 2)
+    },
+    'td:last-child': {
+      'padding-right': typography.rhythm(1 / 2)
+    }
   }
 });
 

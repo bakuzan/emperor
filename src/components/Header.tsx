@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-
 import { graphql, useStaticQuery, Link } from 'gatsby';
 
-import RadioToggle from './RadioToggle';
+import RadioToggle from 'meiko/RadioToggle';
+
 import { rhythm } from '@/utils/typography';
 import { Icons } from '@/consts';
 

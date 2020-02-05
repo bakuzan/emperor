@@ -50,7 +50,7 @@ module.exports = {
     title: `Emperors of Rome`,
     author: `Bakuzan`,
     personalUrl: `https://github.com/bakuzan`,
-    description: `Site listing the emperors of Rome, and my personal ranking of them`,
+    description: `Information on the Emperors of Rome`,
     social: [
       {
         name: `github`,
@@ -59,6 +59,10 @@ module.exports = {
       {
         name: `source`,
         url: `https://github.com/bakuzan/emperor`
+      },
+      {
+        name: `report a bug`,
+        url: `https://github.com/bakuzan/emperor/issues`
       }
     ]
   }

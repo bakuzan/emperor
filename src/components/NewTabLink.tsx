@@ -5,7 +5,7 @@ function NewTabLink({
   ...props
 }: React.HTMLProps<HTMLAnchorElement>) {
   return (
-    <a {...props} target="_blank" rel="noopener noreferrer">
+    <a {...props} target="_blank" rel="nofollow noopener noreferrer">
       {children}
     </a>
   );
