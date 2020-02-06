@@ -27,7 +27,7 @@ function Layout({ children }: LayoutProps) {
       <div
         style={{
           margin: `0 auto`,
-          padding: `0px ${rhythm(3 / 4)} ${rhythm(1)}`,
+          padding: `0px ${rhythm(1 / 2)} ${rhythm(1)}`,
           paddingTop: 0
         }}
       >

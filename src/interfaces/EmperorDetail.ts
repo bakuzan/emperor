@@ -3,5 +3,5 @@ export interface EmperorDetail {
   fields: {
     slug: string;
   };
-  html: string;
+  rawMarkdownBody: string;
 }

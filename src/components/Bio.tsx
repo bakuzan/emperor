@@ -2,8 +2,8 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 
+import NewTabLink from 'meiko/NewTabLink';
 import { rhythm } from '@/utils/typography';
-import NewTabLink from './NewTabLink';
 
 const titles = ['Caesar', 'Imperator', 'Augustus'];
 const getRandomTitle = () => titles[Math.floor(Math.random() * titles.length)];

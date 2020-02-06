@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
-import NewTabLink from './NewTabLink';
+import NewTabLink from 'meiko/NewTabLink';
 import { rhythm } from '@/utils/typography';
 import { SocialLink } from '@/interfaces/SocialLink';
 

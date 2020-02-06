@@ -9,15 +9,22 @@ interface TableProps {
   style: { [key: string]: string };
   headers: TableHeader[];
   children?: React.ReactNode[];
+  showHeaders?: boolean;
 }
 
-function Table({ style, headers, children, ...props }: TableProps) {
+function Table({
+  style,
+  headers,
+  children,
+  showHeaders = true,
+  ...props
+}: TableProps) {
   return (
     <table style={{ ...style }} {...props}>
       <thead>
         <tr>
           {headers.map(({ text, ...x }) => (
-            <th key={text} {...x} style={{ ...(x.style || {}) }}>
+            <th key={text} {...x} style={{ ...(x.style ?? {}) }}>
               {text}
             </th>
           ))}

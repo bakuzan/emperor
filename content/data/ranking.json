@@ -1,10 +1,11 @@
 {
   "ranked": [
     { "slug": "Augustus", "rank": 1 },
-    { "slug": "Claudius", "rank": 2 },
-    { "slug": "Tiberius", "rank": 3 },
-    { "slug": "Nero", "rank": 4 },
-    { "slug": "Caligula", "rank": 5 }
+    { "slug": "Vespasian", "rank": 2 },
+    { "slug": "Claudius", "rank": 3 },
+    { "slug": "Tiberius", "rank": 4 },
+    { "slug": "Nero", "rank": 5 },
+    { "slug": "Caligula", "rank": 6 }
   ],
-  "unranked": ["Galba", "Otho"]
+  "unranked": ["Galba", "Otho", "Vitellius"]
 }

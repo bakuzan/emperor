@@ -11,6 +11,12 @@ type AllQuery<T, K extends string> = {
   };
 };
 
+function findPage(items: any, index: number, pages: any) {
+  const item = items[index];
+  const itemSlug = `/${item.slug}/`;
+  return pages.find((x: any) => x.fields.slug.includes(itemSlug)) ?? null;
+}
+
 export const createPages: GatsbyNode['createPages'] = async ({
   graphql,
   actions
@@ -56,12 +62,13 @@ export const createPages: GatsbyNode['createPages'] = async ({
     '../src/templates/ListingDetail.tsx'
   );
 
-  items.forEach((item, index) => {
-    const node = pages.find((x) => x.fields.slug === item.slug);
+  items.forEach((item, idx, aItems) => {
+    const itemSlug = `/${item.slug}/`;
+    const node = pages.find((x) => x.fields.slug.includes(itemSlug));
 
     if (node) {
-      const previous = index === maxIndex ? null : pages[index + 1];
-      const next = index === 0 ? null : pages[index - 1];
+      const previous = idx === 0 ? null : findPage(aItems, idx - 1, pages);
+      const next = idx === maxIndex ? null : findPage(aItems, idx + 1, pages);
       const slug = node.fields.slug;
 
       createPage({

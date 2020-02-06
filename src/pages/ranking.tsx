@@ -1,12 +1,15 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
+import NewTabLink from 'meiko/NewTabLink';
+
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import Listing from '@/components/Listing';
 import Bio from '@/components/Bio';
 import { Emperor, RankedEmperor } from '@/interfaces/Emperor';
 import { EMPPage } from '@/interfaces/EMPPage';
+import filterFalsey from '@/utils/filterFalsey';
 
 interface Rank {
   slug: string;
@@ -23,17 +26,14 @@ export default (props: RankingProps) => {
   const { unranked, ranked } = props.data.dataJson;
   const emperors: Emperor[] = props.data.allEmperorsJson.nodes;
 
-  const rankedEmperors: RankedEmperor[] = ranked
-    .map((x) => {
-      const emp = emperors.find((e) => e.slug === x.slug);
-      return emp ? { ...x, ...emp } : null;
-    })
-    .filter((x) => x !== null);
+  function mapToRanked(x: Rank) {
+    const emp = emperors.find((e) => e.slug === x.slug);
+    return emp ? ({ ...x, ...emp } as RankedEmperor) : null;
+  }
 
-  /**
-   *  Sort by rank
-   *  Group by rank
-   *
+  const rankedEmperors = ranked.map(mapToRanked).filter(filterFalsey);
+
+  /** TODO
    *  Display unranked...
    */
 
@@ -47,12 +47,22 @@ export default (props: RankingProps) => {
         <Bio />
       </aside>
 
-      <p>TODO explain what the ranking is</p>
+      <p>
+        While listening to the fantastic{' '}
+        <NewTabLink
+          href={'https://thehistoryofrome.typepad.com/the_history_of_rome/'}
+        >
+          History of Rome podcast
+        </NewTabLink>
+        I started picking favourites with the emperors until I decided I might
+        as well rank them all. Below you can find my personal ranked order.
+      </p>
 
       <Listing
         title="Roman Emperors, ranked"
         data={rankedEmperors}
-        grouping={(x) => x.house}
+        grouping={(x) => x.rank}
+        showInSingleTable
       />
     </Layout>
   );

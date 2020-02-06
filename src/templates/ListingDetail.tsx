@@ -11,15 +11,24 @@ import { Query } from '@/interfaces/Query';
 import { rhythm } from '@/utils/typography';
 import slugToDisplayName from '@/utils/slugToDisplayName';
 
+const MarkdownSplitPoint = `[comment]: # 'breakpoint'`;
+
 interface ListingDetailProps
   extends EMPPage<Query<EmperorDetail, 'markdownRemark'>> {}
 
 export default function ListingDetail(props: ListingDetailProps) {
   const { data, pageContext, path } = props;
-  const { html } = data.markdownRemark;
+  const { rawMarkdownBody } = data.markdownRemark;
 
   const name = slugToDisplayName(path);
+  const [topContent, coreContent] = rawMarkdownBody.split(MarkdownSplitPoint);
+
   console.log('DETAIL', props);
+
+  // TODO
+  // Show json data for each emperor next to the photo
+  // Include a wikipedia link..(make it copyable ?)
+
   return (
     <Layout>
       <SEO title={name} />
@@ -32,7 +41,10 @@ export default function ListingDetail(props: ListingDetailProps) {
           {name}
         </h2>
       </ListingNavigation>
-      <div id="wikiDetail" dangerouslySetInnerHTML={{ __html: html }} />
+      <div>
+        <div id="wikiPhoto" dangerouslySetInnerHTML={{ __html: topContent }} />
+      </div>
+      <div id="wikiDetail" dangerouslySetInnerHTML={{ __html: coreContent }} />
     </Layout>
   );
 }
@@ -44,7 +56,7 @@ export const query = graphql`
       fields {
         slug
       }
-      html
+      rawMarkdownBody
     }
   }
 `;
