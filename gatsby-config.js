@@ -11,16 +11,17 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `data`,
-        path: `${__dirname}/data/`
+        path: `${__dirname}/content/data/`
       }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `assets`,
-        path: `${__dirname}/assets/`
+        path: `${__dirname}/content/assets/`
       }
     },
+    `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -39,7 +40,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#66023c`,
         display: `minimal-ui`,
-        icon: `assets/icon.png`,
+        icon: `content/assets/icon.png`,
         theme_color_in_head: false
       }
     }

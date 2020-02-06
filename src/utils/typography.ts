@@ -14,7 +14,7 @@ FairyGates.overrideThemeStyles = () => ({
     color: `var(--primary-colour)`
   },
   [`a:focus, a:hover`]: {
-    boxShadow: `inset 0 -1.2em 0 var(--alt-colour, #ddd)`
+    boxShadow: `inset 0 -1.4em 0 var(--alt-colour, #ddd)`
   },
   'td,th': {
     padding: typography.rhythm(1 / 2),

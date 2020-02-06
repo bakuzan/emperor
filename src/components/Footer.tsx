@@ -59,7 +59,9 @@ function Footer() {
         {info.social.map((x, i: number) => (
           <React.Fragment key={i}>
             {i !== 0 && <Divider />}
-            <NewTabLink href={x.url}>{x.name}</NewTabLink>
+            <div>
+              <NewTabLink href={x.url}>{x.name}</NewTabLink>
+            </div>
           </React.Fragment>
         ))}
       </div>

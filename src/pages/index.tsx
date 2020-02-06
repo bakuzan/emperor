@@ -5,14 +5,10 @@ import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import Listing from '@/components/Listing';
 import { Emperor } from '@/interfaces/Emperor';
+import { EMPPage } from '@/interfaces/EMPPage';
 
-interface HomeProps {
-  path: string;
-  uri: string;
-  data: { allEmperorsJson: { nodes: Emperor[] } };
-  pageContext: any;
-  pathContext: any;
-}
+interface HomeProps
+  extends EMPPage<{ allEmperorsJson: { nodes: Emperor[] } }> {}
 
 export default (props: HomeProps) => {
   const items: Emperor[] = props.data.allEmperorsJson.nodes;

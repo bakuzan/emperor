@@ -1,0 +1,10 @@
+{
+  "ranked": [
+    { "slug": "Augustus", "rank": 1 },
+    { "slug": "Claudius", "rank": 2 },
+    { "slug": "Tiberius", "rank": 3 },
+    { "slug": "Nero", "rank": 4 },
+    { "slug": "Caligula", "rank": 5 }
+  ],
+  "unranked": ["Galba", "Otho"]
+}

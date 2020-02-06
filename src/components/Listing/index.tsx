@@ -26,6 +26,11 @@ function Listing({ title, ...props }: ListingProps) {
   const groups = groupBy(props.data, props.grouping);
 
   console.log('Listing > ', props, groups);
+
+  // TODO
+  // Sorting...
+  // Filtering...
+
   return (
     <section>
       <header>
