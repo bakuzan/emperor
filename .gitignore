@@ -53,6 +53,7 @@ typings/
 
 # dotenv environment variable files
 .env*
+!.env.example
 
 # gatsby files
 .cache/
@@ -70,4 +71,6 @@ yarn-error.log
 
 
 # Extra
+__pycache__
+ENV
 /tools/cache/*.html

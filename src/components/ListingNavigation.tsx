@@ -9,8 +9,8 @@ interface NavigationProps
     Pick<React.HTMLProps<HTMLDivElement>, 'children'> {}
 
 export default function ListingNavigation(props: NavigationProps) {
-  const prev = props.previous;
-  const next = props.next;
+  const { previous: prev, next } = props;
+
   return (
     <div
       style={{
