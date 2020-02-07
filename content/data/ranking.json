@@ -4,8 +4,10 @@
     { "slug": "Vespasian", "rank": 2 },
     { "slug": "Claudius", "rank": 3 },
     { "slug": "Tiberius", "rank": 4 },
-    { "slug": "Nero", "rank": 5 },
-    { "slug": "Caligula", "rank": 6 }
+    { "slug": "Titus", "rank": 5 },
+    { "slug": "Domitian", "rank": 6 },
+    { "slug": "Nero", "rank": 7 },
+    { "slug": "Caligula", "rank": 8 }
   ],
   "unranked": ["Galba", "Otho", "Vitellius"]
 }

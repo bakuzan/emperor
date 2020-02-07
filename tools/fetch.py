@@ -2,7 +2,7 @@ from os.path import abspath, join, dirname
 from requests import get
 from requests.exceptions import RequestException
 from contextlib import closing
-from file import read_file, write_file
+from file import read_file, write_cache_file
 
 
 def simple_get(url):
@@ -23,7 +23,7 @@ def simple_get(url):
         print("Fetching: {0}...".format(url))
         with closing(get(url, stream=True)) as resp:
             if is_good_response(resp):
-                write_file(filepath, resp.content)
+                write_cache_file(filepath, resp.content)
                 return resp.content
             else:
                 return None
