@@ -1,6 +1,7 @@
 import { GatsbyNode } from 'gatsby';
 import { createFilePath, createRemoteFileNode } from 'gatsby-source-filesystem';
 
+import monthNames from 'ayaka/constants/monthNames';
 import calculateReignLength from './utils/calculateReignLength';
 
 export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
@@ -31,6 +32,18 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
     if (image) {
       nodeItem.image___NODE = image.id;
     }
+
+    const d = new Date();
+    const today = `${d.getDate()} ${
+      monthNames[d.getMonth()]
+    } ${d.getFullYear()}`;
+
+    nodeItem.daysSinceReignStart = calculateReignLength(
+      nodeItem.reignStart,
+      today
+    );
+
+    nodeItem.daysSinceReignEnd = calculateReignLength(nodeItem.reignEnd, today);
 
     nodeItem.reignLengthInDays = calculateReignLength(
       nodeItem.reignStart,

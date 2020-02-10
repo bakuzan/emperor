@@ -46,11 +46,12 @@ function Listing<T extends Emperor>({
         {!showInSingleTable &&
           tableGroups.map(([key, grp]) => (
             <Table key={key} headers={headers}>
-              {grp.map((x, i) => (
+              {grp.map((x, i, a) => (
                 <ItemRenderer
                   key={x.id}
                   data={x}
                   group={key}
+                  groupTotal={a.length}
                   showGroup={i === 0}
                 />
               ))}
@@ -59,11 +60,12 @@ function Listing<T extends Emperor>({
         {showInSingleTable && (
           <Table headers={headers}>
             {tableGroups.map(([key, grp]) =>
-              grp.map((x, i) => (
+              grp.map((x, i, a) => (
                 <ItemRenderer
                   key={x.id}
                   data={x}
                   group={key}
+                  groupTotal={a.length}
                   showGroup={i === 0}
                 />
               ))

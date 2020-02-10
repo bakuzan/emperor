@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 from config import load_config
 from fetch import simple_get
 from list_processors import get_name, get_image_url, get_birth_info, get_death_info, get_reign
+from node_processors import set_birth, set_death, set_reign, set_house
 from file import load_json, write_file
 from utils import clean_text, prepare_html_output
 
@@ -37,9 +38,7 @@ def do_list_scrape():
     items = [tr.find_all("td") for tr in html.select(
         ".wikitable > tbody > tr") if len(tr.find_all("td")) > 0]
 
-    for idx, cells in enumerate(items):
-        nth = idx + 1
-
+    for cells in items:
         img = get_image_url(cells[0])
         name = get_name(cells[1])
         slug = name.replace(" ", "_")
@@ -47,28 +46,27 @@ def do_list_scrape():
 
         # TODO
         # These are gross...maybe to get them from the individual emperor pages...
-        born_when, born_where = get_birth_info(cells[2])
-        reign_start, reign_end = get_reign(cells[4])
-        died_when, died_where_why = get_death_info(cells[6])
+        # born_when, born_where = get_birth_info(cells[2])
+        # reign_start, reign_end = get_reign(cells[4])
+        # died_when, died_where_why = get_death_info(cells[6])
 
         emp = {
             "slug": slug,
-            "nth": nth,
             "name": name,
             "image": img,
-            "dateOfBirth": born_when,
-            "birthplace": born_where,
-            "dateOfDeath": died_when,
-            "deathInfo": died_where_why,
             "succession": succession,
-            "reignStart": reign_start,
-            "reignEnd": reign_end
         }
+        # "dateOfBirth": born_when,
+        # "birthplace": born_where,
+        # "dateOfDeath": died_when,
+        # "deathInfo": died_where_why,
+        # "reignStart": reign_start,
+        # "reignEnd": reign_end
 
         emperors.append(emp)
 
     filepath = get_data_filepath("emperors.json")
-    write_file(filepath, json.dumps(emperors))
+    write_file(filepath, json.dumps(emperors, indent=2))
 
 
 def do_detail_scrape(index, limit):
@@ -83,6 +81,11 @@ def do_detail_scrape(index, limit):
 
         print("Processing {0}...".format(item_slug), flush=True)
         html = BeautifulSoup(page, "html.parser")
+
+        set_birth(html, item)
+        set_death(html, item)
+        set_reign(html, item)
+        set_house(html, item)
 
         photo = html.select("td.photo").pop()
         photo.name = "div"
@@ -105,6 +108,11 @@ def do_detail_scrape(index, limit):
         soup = BeautifulSoup("".join(details), "html.parser")
         output = prepare_html_output(soup)
         write_file(filepath, output)
+
+    print("Updating emperor list...")
+    data[index:limit] = items
+    filepath = get_data_filepath("emperors.json")
+    write_file(filepath, json.dumps(data, indent=2))
 
 
 if __name__ == "__main__":

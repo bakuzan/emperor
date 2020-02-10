@@ -10,31 +10,37 @@ import { displayReignLength } from '@/utils/displayReignLength';
 
 export interface ListingItemProps {
   data: Emperor;
-  group: any;
+  group: string | number;
+  groupTotal: number;
   showGroup: boolean;
 }
 
 export default function ListingItem({
   data,
   group,
+  groupTotal,
   showGroup
 }: ListingItemProps) {
   return (
     <tr className="emperor">
-      <td
-        className={classNames('emperor__group-cell', {
-          'emperor__group-cell--visible': showGroup
-        })}
-        aria-label={group}
-        column-title=""
-      >
-        {showGroup && (
+      {showGroup && (
+        <td
+          className={classNames('emperor__group-cell', {
+            'emperor__group-cell--visible': showGroup
+          })}
+          aria-label={`${group}`}
+          column-title=""
+          rowSpan={groupTotal}
+        >
           <div className="emperor__group" aria-hidden={true}>
             {group}
           </div>
-        )}
-      </td>
-      <td column-title="Name">
+        </td>
+      )}
+      <td
+        style={{ padding: showGroup ? undefined : rhythm(1 / 2) }}
+        column-title="Name"
+      >
         <div style={{ display: 'flex' }}>
           <Img style={{ flex: `0 0 96px` }} {...data.image.childImageSharp} />
           <div>

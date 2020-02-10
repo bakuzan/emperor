@@ -23,7 +23,7 @@ function getMonthLength(m: number, y: number) {
 }
 
 export default function calculateReignLength(from: string, to: string) {
-  const [f_d, f_m, f_y, f_x] = getParts(from);
+  const [f_d, f_m, f_y, f_x = 'AD'] = getParts(from);
   const [t_d, t_m, t_y] = getParts(to);
 
   const fd = Number(f_d);
