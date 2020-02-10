@@ -2,7 +2,7 @@ import { GatsbyNode } from 'gatsby';
 import { createFilePath, createRemoteFileNode } from 'gatsby-source-filesystem';
 
 import monthNames from 'ayaka/constants/monthNames';
-import calculateReignLength from './utils/calculateReignLength';
+import calculateTimespan from './utils/calculateTimespan';
 
 export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
   node,
@@ -38,14 +38,14 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
       monthNames[d.getMonth()]
     } ${d.getFullYear()}`;
 
-    nodeItem.daysSinceReignStart = calculateReignLength(
+    nodeItem.daysSinceReignStart = calculateTimespan(
       nodeItem.reignStart,
       today
     );
 
-    nodeItem.daysSinceReignEnd = calculateReignLength(nodeItem.reignEnd, today);
+    nodeItem.daysSinceReignEnd = calculateTimespan(nodeItem.reignEnd, today);
 
-    nodeItem.reignLengthInDays = calculateReignLength(
+    nodeItem.reignLengthInDays = calculateTimespan(
       nodeItem.reignStart,
       nodeItem.reignEnd
     );

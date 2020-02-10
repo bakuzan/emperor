@@ -26,17 +26,20 @@ def get_data_filepath(filename):
     return abspath(join(dirname(__file__), "../content/data/", filename))
 
 
-def do_list_scrape():
+def do_list_scrape(overwrite):
     list_of_emperors = "https://en.wikipedia.org/wiki/List_of_Roman_emperors"
     page = simple_get(list_of_emperors)
 
     print("Processing emperor list...")
-    emperors = []
+    filepath = get_data_filepath("emperors.json")
+    emperors = load_json(filepath)
+
+    if overwrite:
+        emperors = []
 
     html = BeautifulSoup(page, "html.parser")
-
-    items = [tr.find_all("td") for tr in html.select(
-        ".wikitable > tbody > tr") if len(tr.find_all("td")) > 0]
+    rows = html.select(".wikitable > tbody > tr")
+    items = [tr.find_all("td") for tr in rows if len(tr.find_all("td")) > 0]
 
     for cells in items:
         img = get_image_url(cells[0])
@@ -45,9 +48,6 @@ def do_list_scrape():
         succession = clean_text(cells[3].get_text())
 
         # TODO
-        # These are gross...maybe to get them from the individual emperor pages...
-        # born_when, born_where = get_birth_info(cells[2])
-        # reign_start, reign_end = get_reign(cells[4])
         # died_when, died_where_why = get_death_info(cells[6])
 
         emp = {
@@ -56,16 +56,14 @@ def do_list_scrape():
             "image": img,
             "succession": succession,
         }
-        # "dateOfBirth": born_when,
-        # "birthplace": born_where,
-        # "dateOfDeath": died_when,
         # "deathInfo": died_where_why,
-        # "reignStart": reign_start,
-        # "reignEnd": reign_end
 
-        emperors.append(emp)
+        g = (i for i, e in enumerate(emperors) if e["slug"] == slug)
+        index = next(g)
 
-    filepath = get_data_filepath("emperors.json")
+        if index == -1:
+            emperors.append(emp)
+
     write_file(filepath, json.dumps(emperors, indent=2))
 
 
@@ -121,18 +119,19 @@ if __name__ == "__main__":
     mode = os.environ.get("MODE")
     start_index = int(os.environ.get("START_INDEX", 0))
     limit = min(int(os.environ.get("LIMIT", 5)), 20)
+    overwrite = os.environ.get("OVERWRITE", "false") == "true"
 
     if mode == None:
         print("MODE not set, exiting...")
         sys.exit()
 
     if int(mode) == modes.get("list"):
-        do_list_scrape()
+        do_list_scrape(overwrite)
         print("Finished writing emperors.json.")
         sys.exit()
 
     elif int(mode) == modes.get("detail"):
-        do_detail_scrape(start_index, limit)
+        do_detail_scrape(start_index, limit, overwrite)
         print("Finished writing emperor details.")
         sys.exit()
 

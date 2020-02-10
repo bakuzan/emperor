@@ -22,8 +22,8 @@ function getMonthLength(m: number, y: number) {
   return getLastDayOfMonth(new Date(2020, m, 0)).getDate();
 }
 
-export default function calculateReignLength(from: string, to: string) {
-  const [f_d, f_m, f_y, f_x = 'AD'] = getParts(from);
+export default function calculateTimespan(from: string, to: string) {
+  const [f_d, f_m, f_y, f_x] = getParts(from);
   const [t_d, t_m, t_y] = getParts(to);
 
   const fd = Number(f_d);
@@ -35,7 +35,8 @@ export default function calculateReignLength(from: string, to: string) {
   let months = 0;
   let days = 0;
 
-  if (f_x === Era.BC) {
+  const fx = f_x ?? 'AD';
+  if (fx === Era.BC) {
     years = Number(f_y) + Number(t_y) - 1;
   }
 
