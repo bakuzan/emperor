@@ -63,6 +63,7 @@ export default (props: RankingProps) => {
         data={rankedEmperors}
         grouping={(x) => x.rank}
         showInSingleTable
+        preserveGroupOrientation
       />
     </Layout>
   );

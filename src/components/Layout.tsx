@@ -35,7 +35,13 @@ function Layout({ children }: LayoutProps) {
           paddingTop: 0
         }}
       >
-        <nav style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <nav
+          style={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            margin: `${rhythm(1 / 2)} 0`
+          }}
+        >
           <NavLink to="/">Home</NavLink>
           <NavLink to="/ranking">Ranking</NavLink>
           <NavLink to="/explore">Explore</NavLink>

@@ -30,6 +30,14 @@ $brilliant-lavender: #f4bbff;
   --table-cell-border-colour: var(--primary-colour);
 }
 
+.table-sort-button {
+  &:focus,
+  &:hover,
+  &:active {
+    background-color: var(--alt-colour);
+  }
+}
+
 /* Overrides */
 .radio-toggle__control {
   top: 0px !important; // TODO Fix this in meiko

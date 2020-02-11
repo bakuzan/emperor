@@ -1,25 +1,36 @@
 import React from 'react';
 
 import groupBy from 'ayaka/groupBy';
+import Icons from 'meiko/constants/icons';
 
-import Table from '../Table';
+import Table, { TableHeader } from '../Table';
 import { Emperor } from '@/interfaces/Emperor';
 import ListingItem, { ListingItemProps } from './ListingItem';
+
+export type SortKey =
+  | 'name'
+  | 'reignLengthInDays'
+  | 'daysSinceReignStart'
+  | 'daysSinceReignEnd';
 
 interface ListingProps<T extends Emperor> {
   title: string;
   data: T[];
   listItemComponent: React.FunctionComponent<ListingItemProps>;
   showInSingleTable: boolean;
+  preserveGroupOrientation?: boolean;
+  isSortDesc?: boolean;
+  sortKey?: SortKey;
   grouping: (x: T) => any;
+  onSortToggle?: (key: SortKey) => void;
 }
 
-const headers = [
+const headers: TableHeader<SortKey>[] = [
   { text: '' },
-  { text: 'Name' },
-  { text: 'Reign From' },
-  { text: 'Reign Until' },
-  { text: 'Reign Length' }
+  { text: 'Name', sortKey: 'name' },
+  { text: 'Reign From', sortKey: 'daysSinceReignStart' },
+  { text: 'Reign Until', sortKey: 'daysSinceReignEnd' },
+  { text: 'Reign Length', sortKey: 'reignLengthInDays' }
 ];
 
 function Listing<T extends Emperor>({
@@ -30,12 +41,7 @@ function Listing<T extends Emperor>({
   const ItemRenderer = props.listItemComponent;
   const groups = groupBy(props.data, props.grouping);
   const tableGroups = Array.from(groups.entries());
-
-  console.log('Listing > ', props, groups);
-
-  // TODO
-  // Sorting...
-  // Filtering...
+  const sortIcon = props.isSortDesc ? Icons.down : Icons.up;
 
   return (
     <section>
@@ -53,12 +59,18 @@ function Listing<T extends Emperor>({
                   group={key}
                   groupTotal={a.length}
                   showGroup={i === 0}
+                  preserveGroupOrientation={props.preserveGroupOrientation}
                 />
               ))}
             </Table>
           ))}
         {showInSingleTable && (
-          <Table headers={headers}>
+          <Table
+            headers={headers}
+            sortIcon={sortIcon}
+            sortKey={props.sortKey}
+            onSort={props.onSortToggle}
+          >
             {tableGroups.map(([key, grp]) =>
               grp.map((x, i, a) => (
                 <ItemRenderer
@@ -67,6 +79,7 @@ function Listing<T extends Emperor>({
                   group={key}
                   groupTotal={a.length}
                   showGroup={i === 0}
+                  preserveGroupOrientation={props.preserveGroupOrientation}
                 />
               ))
             )}

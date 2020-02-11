@@ -13,13 +13,15 @@ export interface ListingItemProps {
   group: string | number;
   groupTotal: number;
   showGroup: boolean;
+  preserveGroupOrientation?: boolean;
 }
 
 export default function ListingItem({
   data,
   group,
   groupTotal,
-  showGroup
+  showGroup,
+  preserveGroupOrientation
 }: ListingItemProps) {
   return (
     <tr className="emperor">
@@ -32,7 +34,12 @@ export default function ListingItem({
           column-title=""
           rowSpan={groupTotal}
         >
-          <div className="emperor__group" aria-hidden={true}>
+          <div
+            className={classNames('emperor__group', {
+              'emperor__group--no-rotate': preserveGroupOrientation
+            })}
+            aria-hidden={true}
+          >
             {group}
           </div>
         </td>

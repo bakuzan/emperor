@@ -4,13 +4,14 @@
     { "slug": "Trajan", "rank": 2 },
     { "slug": "Vespasian", "rank": 3 },
     { "slug": "Claudius", "rank": 4 },
-    { "slug": "Hadrian", "rank": 4 },
+    { "slug": "Hadrian", "rank": 5 },
+    { "slug": "Antoninus_Pius", "rank": 6 },
     { "slug": "Tiberius", "rank": 6 },
-    { "slug": "Nerva", "rank": 7 },
-    { "slug": "Titus", "rank": 7 },
-    { "slug": "Domitian", "rank": 9 },
-    { "slug": "Nero", "rank": 10 },
-    { "slug": "Caligula", "rank": 11 }
+    { "slug": "Nerva", "rank": 8 },
+    { "slug": "Titus", "rank": 8 },
+    { "slug": "Domitian", "rank": 10 },
+    { "slug": "Nero", "rank": 11 },
+    { "slug": "Caligula", "rank": 12 }
   ],
   "unranked": ["Galba", "Otho", "Vitellius"]
 }

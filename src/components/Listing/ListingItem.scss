@@ -33,6 +33,13 @@
     transform: rotate(-180deg);
     white-space: nowrap;
     writing-mode: vertical-lr;
+    cursor: default;
+
+    &--no-rotate {
+      justify-content: center;
+      transform: rotate(0deg);
+      writing-mode: lr;
+    }
 
     @include respondToAll((xxs, xs)) {
       justify-content: flex-start;
