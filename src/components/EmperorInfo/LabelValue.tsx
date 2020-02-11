@@ -18,7 +18,7 @@ export default function LabelValue({ label, children }: LabelValueProps) {
       >
         {label}
       </div>
-      <div>{children}</div>
+      <div style={{ padding: `0 ${rhythm(1 / 4)}` }}>{children}</div>
     </>
   );
 }

@@ -12,18 +12,21 @@ export function displayReignLength(reignInDays: number) {
   const dm = totalDays / ONE_MONTH;
   const months = Math.floor(dm - years * 12);
 
-  const days = Math.round(totalDays - years * ONE_YEAR - months * ONE_MONTH);
+  const days =
+    months >= 0
+      ? Math.round(totalDays - years * ONE_YEAR - months * ONE_MONTH)
+      : 0;
 
-  if (years) {
+  if (years > 0) {
     reign += `${years} years`;
   }
 
-  if (months) {
+  if (months > 0) {
     reign += reign ? ', ' : '';
     reign += `${months} months`;
   }
 
-  if (days) {
+  if (days > 0) {
     reign += reign ? ' and ' : '';
     reign += `${days} days`;
   }

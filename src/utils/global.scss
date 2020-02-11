@@ -34,3 +34,11 @@ $brilliant-lavender: #f4bbff;
 .radio-toggle__control {
   top: 0px !important; // TODO Fix this in meiko
 }
+
+.clearable-input__input {
+  background: inherit;
+  color: inherit;
+}
+.has-float-label .clearable-input__input:focus {
+  border-color: var(--primary-colour);
+}

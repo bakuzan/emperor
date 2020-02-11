@@ -38,7 +38,7 @@ export default function ListingItem({
         </td>
       )}
       <td
-        style={{ padding: showGroup ? undefined : rhythm(1 / 2) }}
+        style={{ paddingLeft: showGroup ? undefined : rhythm(1 / 2) }}
         column-title="Name"
       >
         <div style={{ display: 'flex' }}>

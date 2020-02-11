@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, GatsbyLinkProps } from 'gatsby';
 
+import { useGlobalStyles } from 'meiko/hooks/useGlobalStyles';
+
 import { rhythm } from '@/utils/typography';
 import Header from './Header';
 import Footer from './Footer';
@@ -21,6 +23,8 @@ const NavLink = (props: Omit<GatsbyLinkProps<any>, 'ref'>) => (
 interface LayoutProps extends React.HTMLProps<HTMLDivElement> {}
 
 function Layout({ children }: LayoutProps) {
+  useGlobalStyles({ includeFont: false });
+
   return (
     <>
       <Header />
@@ -34,6 +38,7 @@ function Layout({ children }: LayoutProps) {
         <nav style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <NavLink to="/">Home</NavLink>
           <NavLink to="/ranking">Ranking</NavLink>
+          <NavLink to="/explore">Explore</NavLink>
         </nav>
         <main style={{ minHeight: `calc(100vh - ${headerHeight}px)` }}>
           {children}

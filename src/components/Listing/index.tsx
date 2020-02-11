@@ -40,7 +40,7 @@ function Listing<T extends Emperor>({
   return (
     <section>
       <header>
-        <h3>{title}</h3>
+        <h3 style={{ color: `inherit` }}>{title}</h3>
       </header>
       <div>
         {!showInSingleTable &&

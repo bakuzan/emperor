@@ -17,6 +17,7 @@ export default function EmperorInfo({ data }: EmperorInfoProps) {
       style={{
         display: 'grid',
         gridAutoRows: `1fr`,
+        gridGap: `2px 4px`,
         gridTemplateColumns: `75px 1fr`,
         padding: `0 ${rhythm(1)}`,
         margin: `auto 0`
@@ -37,14 +38,26 @@ export default function EmperorInfo({ data }: EmperorInfoProps) {
         </div>
         <div>({displayReignLength(data.reignLengthInDays)})</div>
       </LabelValue>
-      <div>
+      <LabelValue label="Links">
         <NewTabLink
           href={`https://en.wikipedia.org/wiki/${data.slug}`}
           aria-label={`Open ${data.name} wikipedia entry in a new tab`}
         >
-          <span aria-hidden={true}>wikipedia</span>
+          <div
+            style={{ display: 'flex', alignItems: 'center' }}
+            aria-hidden={true}
+          >
+            <img
+              src={'/wikipedia.png'}
+              alt={'wikipedia logo'}
+              width={16}
+              height={16}
+              style={{ margin: `0 4px` }}
+            />
+            wikipedia
+          </div>
         </NewTabLink>
-      </div>
+      </LabelValue>
     </div>
   );
 }

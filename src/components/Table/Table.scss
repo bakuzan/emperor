@@ -38,7 +38,7 @@ th {
     border: none;
     // border-bottom: 1px solid var(--table-cell-border-colour);
     position: relative;
-    padding-left: 50%;
+    padding-left: 50% !important;
   }
 
   td:before {

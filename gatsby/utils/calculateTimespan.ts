@@ -2,6 +2,9 @@
 import monthNames from 'ayaka/constants/monthNames';
 import getLastDayOfMonth from 'ayaka/getLastDateOfMonth';
 
+const A_YEAR = 365;
+const A_MONTH = 30.417;
+
 enum Era {
   AD = 'AD',
   BC = 'BC'
@@ -25,6 +28,12 @@ function getMonthLength(m: number, y: number) {
 export default function calculateTimespan(from: string, to: string) {
   const [f_d, f_m, f_y, f_x] = getParts(from);
   const [t_d, t_m, t_y] = getParts(to);
+
+  // If from only has year (see Commodus)
+  if (!f_m && !f_y) {
+    const year_fix = Number(t_y) - Number(f_d);
+    return year_fix * A_YEAR;
+  }
 
   const fd = Number(f_d);
   const td = Number(t_d);
@@ -56,5 +65,5 @@ export default function calculateTimespan(from: string, to: string) {
   }
 
   // in days
-  return years * 365 + months * 30.417 + days;
+  return years * A_YEAR + months * A_MONTH + days;
 }

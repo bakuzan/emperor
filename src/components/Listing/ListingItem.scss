@@ -3,10 +3,10 @@
 
 .emperor {
   &__group-cell {
-    // border: none;
     max-width: 1.45rem;
     padding-right: 0;
-    vertical-align: middle;
+    padding-top: 1rem;
+    vertical-align: top;
     min-width: 20px;
 
     background-color: var(--primary-colour);
@@ -28,12 +28,16 @@
 
   &__group {
     display: flex;
-    justify-content: center;
-    transform: rotate(270deg);
+    justify-content: flex-end;
+    align-items: center;
+    transform: rotate(-180deg);
     white-space: nowrap;
+    writing-mode: vertical-lr;
 
     @include respondToAll((xxs, xs)) {
+      justify-content: flex-start;
       transform: rotate(0deg);
+      writing-mode: lr;
     }
   }
 }
