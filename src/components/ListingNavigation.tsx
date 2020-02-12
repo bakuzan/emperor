@@ -20,7 +20,7 @@ export default function ListingNavigation(props: NavigationProps) {
     >
       <div style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
         {prev && (
-          <Link to={prev.fields.slug} rel="prev">
+          <Link to={`/${prev.fields.slug}`} rel="prev">
             ← {slugToDisplayName(prev.fields.slug)}
           </Link>
         )}
@@ -28,7 +28,7 @@ export default function ListingNavigation(props: NavigationProps) {
       {props.children}
       <div style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
         {next && (
-          <Link to={next.fields.slug} rel="next">
+          <Link to={`/${next.fields.slug}`} rel="next">
             {slugToDisplayName(next.fields.slug)} →
           </Link>
         )}
