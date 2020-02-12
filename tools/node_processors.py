@@ -80,7 +80,7 @@ def set_birth(html, json):
             dob = remove_references(nonplace)
             birthplace = value.replace(dob, "")
         else:
-            dob = parts.string
+            dob = value
             birthplace = "Unknown"
 
         json["dateOfBirth"] = move_ad(dob)
@@ -91,26 +91,37 @@ def set_death(html, json):
     detail = get_table(html)
     value = find_value_cell_text(detail, "Died")
 
-    dod, *other = re.split(r' \(.*\)', value, 2)
-    deathplace = other[0] if len(other) > 0 and other[0] else "Unknown"
+    if value is None:
+        json["dateOfDeath"] = "Unknown"
+        json["deathplace"] = "Unknown"
 
-    json["dateOfDeath"] = move_ad(re.sub(r'\(.*\)', "", dod))
-    json["deathplace"] = remove_references(deathplace)
+    else:
+        dod, *other = re.split(r' \(.*\)', value, 2)
+        deathplace = other[0] if len(other) > 0 and other[0] else "Unknown"
+
+        json["dateOfDeath"] = move_ad(re.sub(r'\(.*\)', "", dod))
+        json["deathplace"] = remove_references(deathplace)
 
 
 def set_reign(html, json):
     detail = get_table(html)
-
     value = find_value_cell_text(detail, "Reign", "Emperor")
-    value = re.sub(r'\(.*$', "", value)
 
-    if "–" in value:
-        start, end = value.split("–")
-    elif "-" in value:
-        start, end = value.split("-")
+    if value is None:
+        json["reignStart"] = "Unknown"
+        json["reignEnd"] = "Unknown"
+
     else:
-        print("Unknown reign format: {0}".format(value))
-        sys.exit(0)
+        value = re.sub(r'\(.*$', "", value)
 
-    json["reignStart"] = move_ad(start)
-    json["reignEnd"] = move_ad(end)
+        if "–" in value:
+            start, end = value.split("–")
+        elif "-" in value:
+            start, end = value.split("-")
+        else:
+            print("Unknown reign format: {0}".format(value))
+            start = ""
+            end = ""
+
+        json["reignStart"] = move_ad(start)
+        json["reignEnd"] = move_ad(end)

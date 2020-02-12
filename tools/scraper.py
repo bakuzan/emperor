@@ -5,7 +5,7 @@ from os.path import abspath, join, dirname
 from bs4 import BeautifulSoup
 from config import load_config
 from fetch import simple_get
-from list_processors import get_name, get_image_url, get_death_info
+from list_processors import get_slug, get_name, get_image_url, get_death_info
 from node_processors import set_birth, set_death, set_reign, set_house
 from file import load_json, write_file
 from utils import clean_text, prepare_html_output, json_dump
@@ -44,7 +44,7 @@ def do_list_scrape(overwrite):
     for cells in items:
         img = get_image_url(cells[0])
         name = get_name(cells[1])
-        slug = name.replace(" ", "_")
+        slug = get_slug(cells[1])
         succession = clean_text(cells[3].get_text())
 
         # TODO
@@ -90,8 +90,16 @@ def do_detail_scrape(index, limit, overwrite):
         photo.name = "div"
         photo["style"] = "text-align: center; margin: 25px 0 10px;"
 
+        # Handle starting point for top content rip...
         paragraphs = []
-        for el in html.find(id="toc").previous_siblings:
+        start_element = html.find(id="toc")
+
+        if start_element is None:
+            elements = html.select("table.vcard")[0].next_siblings
+        else:
+            elements = start_element.previous_siblings
+
+        for el in elements:
             if el.name == None:
                 continue
 

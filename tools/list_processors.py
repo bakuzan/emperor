@@ -12,6 +12,12 @@ def get_name(cell):
     return link.string
 
 
+def get_slug(cell):
+    link = cell.find("a")
+    url = link["href"]
+    return url.replace("/wiki/", "")
+
+
 def get_death_info(cell):
     txt = clean_text(cell.get_text())
     parts = re.split(r"\(.*\)", txt)

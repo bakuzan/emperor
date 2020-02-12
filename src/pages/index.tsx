@@ -26,6 +26,7 @@ export default (props: HomeProps) => {
         title="Roman Emperors, in chronological order"
         data={items}
         grouping={(x) => x.house}
+        showInSingleTable
       />
     </Layout>
   );

@@ -1,11 +1,11 @@
 import React from 'react';
 
-import groupBy from 'ayaka/groupBy';
 import Icons from 'meiko/constants/icons';
 
 import Table, { TableHeader } from '../Table';
-import { Emperor } from '@/interfaces/Emperor';
 import ListingItem, { ListingItemProps } from './ListingItem';
+import { Emperor } from '@/interfaces/Emperor';
+import orderedGroupBy from '@/utils/orderedGroupBy';
 
 export type SortKey =
   | 'name'
@@ -39,7 +39,8 @@ function Listing<T extends Emperor>({
   ...props
 }: ListingProps<T>) {
   const ItemRenderer = props.listItemComponent;
-  const groups = groupBy(props.data, props.grouping);
+
+  const groups = orderedGroupBy(props.data, props.grouping);
   const tableGroups = Array.from(groups.entries());
   const sortIcon = props.isSortDesc ? Icons.down : Icons.up;
 
@@ -56,7 +57,7 @@ function Listing<T extends Emperor>({
                 <ItemRenderer
                   key={x.id}
                   data={x}
-                  group={key}
+                  group={props.grouping(x)}
                   groupTotal={a.length}
                   showGroup={i === 0}
                   preserveGroupOrientation={props.preserveGroupOrientation}
@@ -76,7 +77,7 @@ function Listing<T extends Emperor>({
                 <ItemRenderer
                   key={x.id}
                   data={x}
-                  group={key}
+                  group={props.grouping(x)}
                   groupTotal={a.length}
                   showGroup={i === 0}
                   preserveGroupOrientation={props.preserveGroupOrientation}
