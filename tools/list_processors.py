@@ -2,6 +2,16 @@ import re
 from utils import has_numbers, clean_text
 
 
+def get_image_url(cell):
+    img = cell.find("img")
+    return "https:{0}".format(img["src"])
+
+
+def get_name(cell):
+    link = cell.find("a")
+    return link.string
+
+
 def get_death_info(cell):
     txt = clean_text(cell.get_text())
     parts = re.split(r"\(.*\)", txt)

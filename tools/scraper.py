@@ -5,10 +5,10 @@ from os.path import abspath, join, dirname
 from bs4 import BeautifulSoup
 from config import load_config
 from fetch import simple_get
-from list_processors import get_name, get_image_url, get_birth_info, get_death_info, get_reign
+from list_processors import get_name, get_image_url, get_death_info
 from node_processors import set_birth, set_death, set_reign, set_house
 from file import load_json, write_file
-from utils import clean_text, prepare_html_output
+from utils import clean_text, prepare_html_output, json_dump
 
 html_detail_breakpoint = "\n\n[comment]: # 'breakpoint'\n"
 
@@ -59,19 +59,20 @@ def do_list_scrape(overwrite):
         # "deathInfo": died_where_why,
 
         g = (i for i, e in enumerate(emperors) if e["slug"] == slug)
-        index = next(g)
+        index = next(g, -1)
 
         if index == -1:
             emperors.append(emp)
 
-    write_file(filepath, json.dumps(emperors, indent=2))
+    json_dump(filepath, emperors)
 
 
-def do_detail_scrape(index, limit):
+def do_detail_scrape(index, limit, overwrite):
+    endex = index + limit
     filepath = get_data_filepath("emperors.json")
     data = load_json(filepath)
 
-    items = data[index:limit]
+    items = data[index:endex]
     for item in items:
         item_slug = item["slug"]
         item_url = "https://en.wikipedia.org/wiki/{0}".format(item_slug)
@@ -108,9 +109,9 @@ def do_detail_scrape(index, limit):
         write_file(filepath, output)
 
     print("Updating emperor list...")
-    data[index:limit] = items
+    data[index:endex] = items
     filepath = get_data_filepath("emperors.json")
-    write_file(filepath, json.dumps(data, indent=2))
+    json_dump(filepath, data)
 
 
 if __name__ == "__main__":

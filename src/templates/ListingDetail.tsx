@@ -12,6 +12,7 @@ import { Query } from '@/interfaces/Query';
 import { InDepthEmperor } from '@/interfaces/Emperor';
 import { rhythm } from '@/utils/typography';
 import slugToDisplayName from '@/utils/slugToDisplayName';
+import preprocessScrapeHtml from '@/utils/preprocessScrapeHtml';
 
 const MarkdownSplitPoint = `[comment]: # 'breakpoint'`;
 
@@ -49,23 +50,29 @@ export default function ListingDetail(props: ListingDetailProps) {
         }}
       >
         <EmperorInfo data={data.emperorsJson} />
-        <div id="wikiPhoto" dangerouslySetInnerHTML={{ __html: topContent }} />
+        <div
+          id="wikiPhoto"
+          dangerouslySetInnerHTML={{ __html: preprocessScrapeHtml(topContent) }}
+        />
       </div>
-      <div id="wikiDetail" dangerouslySetInnerHTML={{ __html: coreContent }} />
+      <div
+        id="wikiDetail"
+        dangerouslySetInnerHTML={{ __html: preprocessScrapeHtml(coreContent) }}
+      />
     </Layout>
   );
 }
 
 export const query = graphql`
   query($slug: String!) {
-    markdownRemark(fields: { slug: { regex: $slug } }) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       fields {
         slug
       }
       rawMarkdownBody
     }
-    emperorsJson(slug: { regex: $slug }) {
+    emperorsJson(slug: { eq: $slug }) {
       slug
       name
       dateOfBirth

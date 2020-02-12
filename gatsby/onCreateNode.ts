@@ -49,6 +49,9 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
       nodeItem.reignStart,
       nodeItem.reignEnd
     );
+
+    // Fix slug...
+    nodeItem.slug = `emperor/${nodeItem.slug}/`;
   }
 
   // Details pages

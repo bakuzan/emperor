@@ -30,13 +30,13 @@ function getTitle(key: SortKey, isDesc: boolean) {
         : '';
   }
 
-  return `Roman Emperors ${sortText} order, ${direction}`;
+  return `Roman Emperors ${sortText} (${direction})`;
 }
 
 export default (props: HomeProps) => {
   const [searchString, setSearchString] = useState('');
   const [sortKey, setSortKey] = useState<SortKey>('daysSinceReignStart');
-  const [isDesc, setIsDesc] = useState<boolean>(true);
+  const [isDesc, setIsDesc] = useState<boolean>(false);
 
   const title = getTitle(sortKey, isDesc);
   const lowerSearch = searchString.toLocaleLowerCase();

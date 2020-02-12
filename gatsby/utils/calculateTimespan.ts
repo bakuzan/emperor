@@ -10,9 +10,18 @@ enum Era {
   BC = 'BC'
 }
 
-const getParts = (d: string) => d.split(' ');
+function getDataParts(d: string) {
+  const parts = d.split(' ');
+  if (parts.length === 4) {
+    return parts;
+  }
 
-const getMonthNumber = (s: string) => monthNames.indexOf(s.slice(0, 3)) + 1;
+  const padding = Array(4).fill(null);
+  return [...padding, ...parts, 'AD'].slice(-4);
+}
+
+const getMonthNumber = (s: string) =>
+  s ? monthNames.indexOf(s.slice(0, 3)) + 1 : null;
 
 const isLeapYear = (year: number) =>
   (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
@@ -26,15 +35,10 @@ function getMonthLength(m: number, y: number) {
 }
 
 export default function calculateTimespan(from: string, to: string) {
-  const [f_d, f_m, f_y, f_x] = getParts(from);
-  const [t_d, t_m, t_y] = getParts(to);
+  const [f_d, f_m, f_y, f_x] = getDataParts(from);
+  const [t_d, t_m, t_y] = getDataParts(to);
 
-  // If from only has year (see Commodus)
-  if (!f_m && !f_y) {
-    const year_fix = Number(t_y) - Number(f_d);
-    return year_fix * A_YEAR;
-  }
-
+  /* Regular date processing */
   const fd = Number(f_d);
   const td = Number(t_d);
   const fm = getMonthNumber(f_m);
@@ -49,19 +53,21 @@ export default function calculateTimespan(from: string, to: string) {
     years = Number(f_y) + Number(t_y) - 1;
   }
 
-  if (fm > tm) {
-    years -= 1;
-    months = 12 - (fm - tm);
-  } else if (fm < tm) {
-    months = tm - fm;
-  }
+  if (fm && tm) {
+    if (fm > tm) {
+      years -= 1;
+      months = 12 - (fm - tm);
+    } else if (fm < tm) {
+      months = tm - fm;
+    }
 
-  if (fd > td) {
-    const monthMax = getMonthLength(fm, Number(f_y));
-    months -= 1;
-    days = monthMax - fd + td;
-  } else if (fd < td) {
-    days = td - fd;
+    if (fd > td) {
+      const monthMax = getMonthLength(fm, Number(f_y));
+      months -= 1;
+      days = monthMax - fd + td;
+    } else if (fd < td) {
+      days = td - fd;
+    }
   }
 
   // in days

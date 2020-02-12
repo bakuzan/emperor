@@ -13,7 +13,7 @@ type AllQuery<T, K extends string> = {
 
 function findPage(items: any, index: number, pages: any) {
   const item = items[index];
-  const itemSlug = `/${item.slug}/`;
+  const itemSlug = item.slug;
   return pages.find((x: any) => x.fields.slug.includes(itemSlug)) ?? null;
 }
 
@@ -63,23 +63,25 @@ export const createPages: GatsbyNode['createPages'] = async ({
   );
 
   items.forEach((item, idx, aItems) => {
-    const itemSlug = `/${item.slug}/`;
+    const itemSlug = item.slug;
     const node = pages.find((x) => x.fields.slug.includes(itemSlug));
 
-    if (node) {
-      const previous = idx === 0 ? null : findPage(aItems, idx - 1, pages);
-      const next = idx === maxIndex ? null : findPage(aItems, idx + 1, pages);
-      const slug = node.fields.slug;
-
-      createPage({
-        path: slug,
-        component: listingDetailTemplate,
-        context: {
-          slug,
-          previous,
-          next
-        }
-      });
+    if (!node) {
+      console.warn(`No node found for emperor slug: ${itemSlug}`);
     }
+
+    const previous = idx === 0 ? null : findPage(aItems, idx - 1, pages);
+    const next = idx === maxIndex ? null : findPage(aItems, idx + 1, pages);
+    const slug = node.fields.slug;
+
+    createPage({
+      path: slug,
+      component: listingDetailTemplate,
+      context: {
+        slug,
+        previous,
+        next
+      }
+    });
   });
 };
