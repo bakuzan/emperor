@@ -51,7 +51,7 @@ export default function ListingItem({
         <div style={{ display: 'flex' }}>
           <Img style={{ flex: `0 0 96px` }} {...data.image.childImageSharp} />
           <div>
-            <Link style={{ margin: `0 ${rhythm(1 / 2)}` }} to={`/${data.slug}`}>
+            <Link style={{ margin: `0 ${rhythm(1 / 2)}` }} to={data.slug}>
               {data.name}
             </Link>
           </div>

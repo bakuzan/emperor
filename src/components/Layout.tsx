@@ -36,7 +36,7 @@ interface LayoutProps extends React.HTMLProps<HTMLDivElement> {}
 function Layout({ children }: LayoutProps) {
   useGlobalStyles({ includeFont: false });
 
-  const [alerts, setAlerts] = useState(() => {
+  const [alerts, setAlerts] = useState<AlertMessage[]>(() => {
     const initAlerts = [workInProgressMessage];
     let session = null;
 
@@ -81,10 +81,19 @@ function Layout({ children }: LayoutProps) {
           }}
         >
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/ranking">Ranking</NavLink>
-          <NavLink to="/explore">Explore</NavLink>
+          <NavLink to="/ranking" partiallyActive={true}>
+            Ranking
+          </NavLink>
+          <NavLink to="/explore" partiallyActive={true}>
+            Explore
+          </NavLink>
         </nav>
-        <main style={{ minHeight: `calc(100vh - ${headerHeight}px)` }}>
+        <main
+          style={{
+            minHeight: `calc(100vh - ${headerHeight}px)`,
+            padding: `0 5px`
+          }}
+        >
           {children}
         </main>
         <Footer />
