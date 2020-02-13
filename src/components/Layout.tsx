@@ -38,7 +38,11 @@ function Layout({ children }: LayoutProps) {
 
   const [alerts, setAlerts] = useState(() => {
     const initAlerts = [workInProgressMessage];
-    const session = sessionStorage.getItem(HIDDEN_ALERT_KEY);
+    let session = null;
+
+    if (typeof window !== 'undefined') {
+      session = window.sessionStorage.getItem(HIDDEN_ALERT_KEY);
+    }
 
     if (!session) {
       return initAlerts;
@@ -50,7 +54,7 @@ function Layout({ children }: LayoutProps) {
 
   function dismissAlertMessage() {
     const ids = alerts.map((x) => x.id);
-    sessionStorage.setItem(HIDDEN_ALERT_KEY, JSON.stringify(ids));
+    window.sessionStorage.setItem(HIDDEN_ALERT_KEY, JSON.stringify(ids));
     setAlerts([]);
   }
 

@@ -18,7 +18,7 @@
     "clean": "gatsby clean",
     "pretty": "lint-staged",
     "lint": "tslint --fix -c tslint.json 'src/**/*.ts{,x}'",
-    "deploy": "yarn build --prefix-paths && gh-pages -d public"
+    "deploy": "yarn clean && yarn build --prefix-paths && gh-pages -d public"
   },
   "lint-staged": {
     "{,src,gatsby}/**/*.{ts,tsx}": [

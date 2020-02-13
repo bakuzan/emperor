@@ -22,7 +22,7 @@ function Header({}: HeaderProps) {
   `);
 
   const siteTitle = data.site.siteMetadata.title;
-  const win = window as any;
+  const win = typeof window !== 'undefined' ? (window as any) : {};
 
   useEffect(() => {
     setTheme(win.__theme);
