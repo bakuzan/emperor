@@ -51,7 +51,7 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
     );
 
     // Fix slug...
-    nodeItem.slug = `emperor/${nodeItem.slug}/`;
+    nodeItem.slug = `/${nodeItem.slug}/`;
   }
 
   // Details pages
@@ -65,7 +65,7 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
     createNodeField({
       node,
       name: 'slug',
-      value: `emperor${relativeFilePath}`
+      value: relativeFilePath
     });
   }
 };

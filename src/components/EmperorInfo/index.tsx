@@ -6,6 +6,7 @@ import { displayReignLength } from '@/utils/displayReignLength';
 import { rhythm } from '@/utils/typography';
 import NewTabLink from 'meiko/NewTabLink';
 import slugToWikiSlug from '@/utils/slugToWikiSlug';
+import { withPrefix } from 'gatsby';
 
 interface EmperorInfoProps {
   data: InDepthEmperor;
@@ -50,7 +51,7 @@ export default function EmperorInfo({ data }: EmperorInfoProps) {
             aria-hidden={true}
           >
             <img
-              src={'/wikipedia.png'}
+              src={withPrefix('/wikipedia.png')}
               alt={'wikipedia logo'}
               width={16}
               height={16}

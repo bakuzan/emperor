@@ -27,7 +27,7 @@ export default (props: RankingProps) => {
   const emperors: Emperor[] = props.data.allEmperorsJson.nodes;
 
   function mapToRanked(x: Rank) {
-    const emp = emperors.find((e) => e.slug === `emperor/${x.slug}/`);
+    const emp = emperors.find((e) => e.slug === `/${x.slug}/`);
     return emp ? ({ ...x, ...emp } as RankedEmperor) : null;
   }
 

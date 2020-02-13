@@ -46,6 +46,7 @@ module.exports = {
     }
   ],
   // Customize your site metadata:
+  pathPrefix: 'emperor',
   siteMetadata: {
     generatedDate: (() => new Date().toISOString())(),
     title: `Emperors of Rome`,

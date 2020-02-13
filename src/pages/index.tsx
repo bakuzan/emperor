@@ -13,8 +13,6 @@ interface HomeProps
 export default (props: HomeProps) => {
   const items: Emperor[] = props.data.allEmperorsJson.nodes;
 
-  console.log('Home >', props);
-
   return (
     <Layout>
       <SEO

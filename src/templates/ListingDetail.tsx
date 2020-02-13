@@ -30,8 +30,6 @@ export default function ListingDetail(props: ListingDetailProps) {
   const name = slugToDisplayName(path);
   const [topContent, coreContent] = rawMarkdownBody.split(MarkdownSplitPoint);
 
-  console.log('DETAIL', props);
-
   return (
     <Layout>
       <SEO title={name} />

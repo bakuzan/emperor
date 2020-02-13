@@ -28,13 +28,11 @@ function Table<T extends string>({
   onSort,
   ...props
 }: TableProps<T>) {
-  console.log('TABLE > ', activeSortKey);
   return (
     <table style={{ ...style }} {...props}>
       <thead>
         <tr>
           {headers.map(({ text, sortKey, ...x }) => {
-            console.log('EADER > ', sortKey);
             return (
               <th key={text} {...x} style={{ ...(x.style ?? {}) }}>
                 {onSort !== undefined && sortKey !== undefined ? (
