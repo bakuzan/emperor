@@ -1,0 +1,23 @@
+@import '~meiko/styles/_variables';
+@import '~meiko/styles/_mixins';
+
+@include respondToAll((xxs, xs)) {
+  .listing-detail-top {
+    flex-direction: column;
+  }
+
+  .emperor-detail {
+    margin: 1.45rem 0 0.725rem !important;
+  }
+}
+
+@include respondTo(xxs) {
+  .emperor-detail {
+    grid-template-columns: 1fr !important;
+  }
+
+  .info-label {
+    margin-top: 0.3625rem;
+    text-align: left !important;
+  }
+}

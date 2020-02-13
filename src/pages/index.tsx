@@ -47,6 +47,7 @@ export const query = graphql`
           }
         }
         house
+        succession
         reignStart
         reignEnd
         reignLengthInDays

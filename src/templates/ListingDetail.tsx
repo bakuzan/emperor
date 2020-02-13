@@ -14,6 +14,8 @@ import { rhythm } from '@/utils/typography';
 import slugToDisplayName from '@/utils/slugToDisplayName';
 import preprocessScrapeHtml from '@/utils/preprocessScrapeHtml';
 
+import './ListingDetail.scss';
+
 const MarkdownSplitPoint = `[comment]: # 'breakpoint'`;
 
 type MutliQuery = Query<EmperorDetail, 'markdownRemark'> &
@@ -36,6 +38,7 @@ export default function ListingDetail(props: ListingDetailProps) {
       <ListingNavigation {...pageContext}>
         <h2
           style={{
+            color: `var(--text-colour)`,
             margin: rhythm(1 / 4)
           }}
         >
@@ -43,17 +46,19 @@ export default function ListingDetail(props: ListingDetailProps) {
         </h2>
       </ListingNavigation>
       <div
+        className="listing-detail-top"
         style={{
           display: 'flex',
           justifyContent: 'space-between',
-          padding: `0 ${rhythm(1)}`
+          padding: `0 ${rhythm(1)}`,
+          margin: `${rhythm(1)} 0`
         }}
       >
-        <EmperorInfo data={data.emperorsJson} />
         <div
           id="wikiPhoto"
           dangerouslySetInnerHTML={{ __html: preprocessScrapeHtml(topContent) }}
         />
+        <EmperorInfo data={data.emperorsJson} />
       </div>
       <div
         id="wikiDetail"
@@ -79,6 +84,7 @@ export const query = graphql`
       birthplace
       dateOfDeath
       deathplace
+      house
       succession
       reignStart
       reignEnd

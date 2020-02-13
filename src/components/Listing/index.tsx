@@ -28,6 +28,7 @@ interface ListingProps<T extends Emperor> {
 const headers: TableHeader<SortKey>[] = [
   { text: '' },
   { text: 'Name', sortKey: 'name' },
+  { text: 'Succession', style: { maxWidth: `300px` } },
   { text: 'Reign From', sortKey: 'daysSinceReignStart' },
   { text: 'Reign Until', sortKey: 'daysSinceReignEnd' },
   { text: 'Reign Length', sortKey: 'reignLengthInDays' }

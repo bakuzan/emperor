@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, GatsbyLinkProps } from 'gatsby';
 
+import Alert, { AlertMessage } from 'meiko/Alert';
 import { useGlobalStyles } from 'meiko/hooks/useGlobalStyles';
 
 import { rhythm } from '@/utils/typography';
 import Header from './Header';
 import Footer from './Footer';
 
+const HIDDEN_ALERT_KEY = 'empHiddenAlerts';
 const headerHeight = 73;
+const workInProgressMessage = {
+  id: 'in-progress-warning',
+  type: 'warning',
+  message: 'Work on the list of roman emperors is still in progress.',
+  detail: `Progress will continue on completing the list.
+  In the mean time you can visit 
+  https://en.wikipedia.org/wiki/List_of_Roman_emperors 
+  to see a the complete list of emperors.`
+};
 
 const NavLink = (props: Omit<GatsbyLinkProps<any>, 'ref'>) => (
   <Link
@@ -25,9 +36,32 @@ interface LayoutProps extends React.HTMLProps<HTMLDivElement> {}
 function Layout({ children }: LayoutProps) {
   useGlobalStyles({ includeFont: false });
 
+  const [alerts, setAlerts] = useState(() => {
+    const initAlerts = [workInProgressMessage];
+    const session = sessionStorage.getItem(HIDDEN_ALERT_KEY);
+
+    if (!session) {
+      return initAlerts;
+    }
+
+    const hiddenIds = JSON.parse(session);
+    return initAlerts.filter((x) => !hiddenIds.includes(x.id));
+  });
+
+  function dismissAlertMessage() {
+    const ids = alerts.map((x) => x.id);
+    sessionStorage.setItem(HIDDEN_ALERT_KEY, JSON.stringify(ids));
+    setAlerts([]);
+  }
+
   return (
     <>
       <Header />
+      <Alert
+        messageClassName="emp-alert-message"
+        alerts={alerts}
+        actions={{ dismissAlertMessage }}
+      />
       <div
         style={{
           margin: `0 auto`,

@@ -57,10 +57,13 @@ export default function ListingItem({
           </div>
         </div>
       </td>
+      <td column-title="Succession" style={{ maxWidth: `300px` }}>
+        {data.succession}
+      </td>
       <td column-title="Reign Start">{data.reignStart}</td>
       <td column-title="Reign End">{data.reignEnd}</td>
-      <td column-title="Reign Length">
-        {displayReignLength(data.reignLengthInDays)}
+      <td column-title="Reign Length" style={{ whiteSpace: 'pre-line' }}>
+        {displayReignLength(data.reignLengthInDays, true)}
       </td>
     </tr>
   );

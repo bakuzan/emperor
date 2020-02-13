@@ -1,7 +1,7 @@
 const ONE_YEAR = 365;
 const ONE_MONTH = 30.417;
 
-export function displayReignLength(reignInDays: number) {
+export function displayReignLength(reignInDays: number, newLines = false) {
   let reign = '';
 
   const totalDays = Math.round(reignInDays);
@@ -19,11 +19,19 @@ export function displayReignLength(reignInDays: number) {
 
   if (years > 0) {
     reign += `${years} years`;
+
+    if (newLines) {
+      reign += '\n';
+    }
   }
 
   if (months > 0) {
-    reign += reign ? ', ' : '';
+    reign += reign && !newLines ? ', ' : '';
     reign += `${months} months`;
+
+    if (newLines) {
+      reign += '\n';
+    }
   }
 
   if (days > 0) {

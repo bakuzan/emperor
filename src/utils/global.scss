@@ -50,3 +50,9 @@ $brilliant-lavender: #f4bbff;
 .has-float-label .clearable-input__input:focus {
   border-color: var(--primary-colour);
 }
+
+.emp-alert-message.emp-alert-message {
+  background-color: var(--background-colour);
+  color: var(--text-colour);
+  z-index: 50;
+}

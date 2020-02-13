@@ -8,6 +8,7 @@ export interface Emperor {
     childImageSharp: GatsbyImageProps;
   };
   house: string;
+  succession: string;
   reignStart: string;
   reignEnd: string;
   reignLengthInDays: number;

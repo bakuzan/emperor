@@ -10,6 +10,7 @@ export default function LabelValue({ label, children }: LabelValueProps) {
   return (
     <>
       <div
+        className="info-label"
         style={{
           fontWeight: 'bold',
           padding: `0 ${rhythm(1 / 4)}`,
@@ -18,7 +19,9 @@ export default function LabelValue({ label, children }: LabelValueProps) {
       >
         {label}
       </div>
-      <div style={{ padding: `0 ${rhythm(1 / 4)}` }}>{children}</div>
+      <div className="info-value" style={{ padding: `0 ${rhythm(1 / 4)}` }}>
+        {children}
+      </div>
     </>
   );
 }

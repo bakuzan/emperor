@@ -17,14 +17,15 @@ export default function EmperorInfo({ data }: EmperorInfoProps) {
       className="emperor-detail"
       style={{
         display: 'grid',
-        gridAutoRows: `1fr`,
+        gridAutoRows: `auto`,
         gridGap: `2px 4px`,
-        gridTemplateColumns: `75px 1fr`,
+        gridTemplateColumns: `90px 1fr`,
         padding: `0 ${rhythm(1)}`,
         margin: `auto 0`
       }}
     >
       <LabelValue label="Name">{data.name}</LabelValue>
+      <LabelValue label="Dynasty">{data.house}</LabelValue>
       <LabelValue label="Born">
         <div>{data.dateOfBirth}</div>
         <div>{data.birthplace}</div>
