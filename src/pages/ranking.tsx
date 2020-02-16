@@ -6,7 +6,6 @@ import NewTabLink from 'meiko/NewTabLink';
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import Listing from '@/components/Listing';
-import Bio from '@/components/Bio';
 import { Emperor, RankedEmperor } from '@/interfaces/Emperor';
 import { EMPPage } from '@/interfaces/EMPPage';
 import filterFalsey from '@/utils/filterFalsey';
@@ -19,11 +18,11 @@ interface Rank {
 interface RankingProps
   extends EMPPage<{
     allEmperorsJson: { nodes: Emperor[] };
-    dataJson: { unranked: string[]; ranked: Rank[] };
+    dataJson: { top10: Rank[]; bottom5: Rank[] };
   }> {}
 
 export default (props: RankingProps) => {
-  const { unranked, ranked } = props.data.dataJson;
+  const { top10, bottom5 } = props.data.dataJson;
   const emperors: Emperor[] = props.data.allEmperorsJson.nodes;
 
   function mapToRanked(x: Rank) {
@@ -31,36 +30,33 @@ export default (props: RankingProps) => {
     return emp ? ({ ...x, ...emp } as RankedEmperor) : null;
   }
 
-  const rankedEmperors = ranked.map(mapToRanked).filter(filterFalsey);
-
-  /** TODO
-   *  Display unranked...
-   */
+  const topEmperors = top10.map(mapToRanked).filter(filterFalsey);
+  const bottomEmperors = bottom5.map(mapToRanked).filter(filterFalsey);
 
   return (
     <Layout>
       <SEO
         title="Ranking"
-        description="Roman Emperors ranked from best to worst, by Bakuzan"
+        description="My personal opinion on the best and worst Roman Emperors."
       />
-      <aside>
-        <Bio />
-      </aside>
 
       <p>
-        While listening to the fantastic{' '}
-        <NewTabLink
-          href={'https://thehistoryofrome.typepad.com/the_history_of_rome/'}
-        >
-          History of Rome podcast
-        </NewTabLink>
-        I started picking favourites with the emperors until I decided I might
-        as well rank them all. Below you can find my personal ranked order.
+        Who was the best Emperor of Rome? How do you measure best? Without
+        getting too hung up on the reasoning, I've thrown out my personal top 10
+        emperors of Rome below.
       </p>
+      <p> Just for contrast, I've included the bottom five as well.</p>
 
       <Listing
-        title="Roman Emperors, ranked"
-        data={rankedEmperors}
+        title="Top 10 Roman Emperors"
+        data={topEmperors}
+        grouping={(x) => x.rank}
+        showInSingleTable
+        preserveGroupOrientation
+      />
+      <Listing
+        title="The 5 Worst Roman Emperors"
+        data={bottomEmperors}
         grouping={(x) => x.rank}
         showInSingleTable
         preserveGroupOrientation
@@ -92,8 +88,11 @@ export const query = graphql`
       }
     }
     dataJson {
-      unranked
-      ranked {
+      top10 {
+        rank
+        slug
+      }
+      bottom5 {
         rank
         slug
       }
