@@ -1,17 +1,30 @@
 {
+  "top10": [
+    { "slug": "Augustus", "rank": 1 },
+    { "slug": "Trajan", "rank": 2 },
+    { "slug": "Vespasian", "rank": 3 },
+    { "slug": "Hadrian", "rank": 4 },
+    { "slug": "Marcus_Aurelius", "rank": 5 },
+    { "slug": "Claudius", "rank": 6 }
+  ],
+  "bottom5": [
+    { "slug": "Nero", "rank": 9 },
+    { "slug": "Caligula", "rank": 10 }
+  ],
   "ranked": [
     { "slug": "Augustus", "rank": 1 },
     { "slug": "Trajan", "rank": 2 },
     { "slug": "Vespasian", "rank": 3 },
-    { "slug": "Claudius", "rank": 4 },
-    { "slug": "Hadrian", "rank": 5 },
-    { "slug": "Antoninus_Pius", "rank": 6 },
-    { "slug": "Tiberius", "rank": 6 },
-    { "slug": "Nerva", "rank": 8 },
-    { "slug": "Titus", "rank": 8 },
-    { "slug": "Domitian", "rank": 10 },
-    { "slug": "Nero", "rank": 11 },
-    { "slug": "Caligula", "rank": 12 }
+    { "slug": "Hadrian", "rank": 4 },
+    { "slug": "Marcus_Aurelius", "rank": 5 },
+    { "slug": "Claudius", "rank": 6 },
+    { "slug": "Antoninus_Pius", "rank": 7 },
+    { "slug": "Tiberius", "rank": 8 },
+    { "slug": "Nerva", "rank": 9 },
+    { "slug": "Titus", "rank": 9 },
+    { "slug": "Domitian", "rank": 11 },
+    { "slug": "Nero", "rank": 12 },
+    { "slug": "Caligula", "rank": 13 }
   ],
   "unranked": ["Galba", "Otho", "Vitellius"]
 }

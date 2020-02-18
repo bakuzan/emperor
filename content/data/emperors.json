@@ -606,8 +606,8 @@
     "birthplace": "Narbo, Gallia Narbonensis",
     "dateOfDeath": "July or August 283",
     "deathplace": "Beyond the River Tigris, Sasanian Empire",
-    "reignStart": "282",
-    "reignEnd": "283",
+    "reignStart": "September 282",
+    "reignEnd": "August 283",
     "house": "None"
   },
   {
@@ -619,8 +619,8 @@
     "birthplace": "Unknown",
     "dateOfDeath": "July 285",
     "deathplace": "River Margus, Moesia",
-    "reignStart": "282",
-    "reignEnd": "283",
+    "reignStart": "August 283",
+    "reignEnd": "285",
     "house": "None"
   },
   {
@@ -632,8 +632,8 @@
     "birthplace": "Unknown",
     "dateOfDeath": "20 November 284",
     "deathplace": "Emesa",
-    "reignStart": "282",
-    "reignEnd": "283",
+    "reignStart": "August 283",
+    "reignEnd": "284",
     "house": "None"
   },
   {
@@ -658,8 +658,8 @@
     "birthplace": "Sirmium (present-day Sremska Mitrovica, Serbia)",
     "dateOfDeath": "c. July 310",
     "deathplace": "Unknown",
-    "reignStart": "July 21 285",
-    "reignEnd": "286",
+    "reignStart": "1 April 286",
+    "reignEnd": "1 May 305",
     "house": "None"
   },
   {
@@ -672,7 +672,7 @@
     "dateOfDeath": "5 May 311",
     "deathplace": "Serdica",
     "reignStart": "1 May 305",
-    "reignEnd": "5 May 311",
+    "reignEnd": "May 311",
     "house": "None"
   },
   {
@@ -684,8 +684,8 @@
     "birthplace": "Dardania",
     "dateOfDeath": "25 July 306",
     "deathplace": "Eboracum, Britannia",
-    "reignStart": "293",
-    "reignEnd": "305",
+    "reignStart": "1 May 305",
+    "reignEnd": "25 July 306",
     "house": "Constantinian"
   },
   {
@@ -697,8 +697,8 @@
     "birthplace": "Unknown",
     "dateOfDeath": "September 307",
     "deathplace": "Tres Tabernae",
-    "reignStart": "1 May 305",
-    "reignEnd": "Summer 306",
+    "reignStart": "July 306",
+    "reignEnd": "April 307",
     "house": "None"
   },
   {

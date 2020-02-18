@@ -43,7 +43,8 @@ export default (props: RankingProps) => {
       <p>
         Who was the best Emperor of Rome? How do you measure best? Without
         getting too hung up on the reasoning, I've thrown out my personal top 10
-        emperors of Rome below.
+        emperors of Rome below. This will be updated as I learn about the
+        Emperors.
       </p>
       <p> Just for contrast, I've included the bottom five as well.</p>
 
