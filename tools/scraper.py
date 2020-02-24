@@ -5,7 +5,7 @@ from os.path import abspath, join, dirname
 from bs4 import BeautifulSoup
 from config import load_config
 from fetch import simple_get
-from list_processors import get_slug, get_name, get_image_url, get_death_info
+from list_processors import get_slug, get_name, get_image_url, get_reign
 from node_processors import set_birth, set_death, set_reign, set_house
 from file import load_json, write_file
 from utils import clean_text, prepare_html_output, json_dump
@@ -49,14 +49,16 @@ def do_list_scrape(overwrite):
 
         # TODO
         # died_when, died_where_why = get_death_info(cells[6])
+        start, end = get_reign(cells[4])
 
         emp = {
             "slug": slug,
             "name": name,
             "image": img,
             "succession": succession,
+            "reignStart": start,
+            "reignEnd": end
         }
-        # "deathInfo": died_where_why,
 
         g = (i for i, e in enumerate(emperors) if e["slug"] == slug)
         index = next(g, -1)
