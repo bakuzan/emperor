@@ -54,6 +54,11 @@ export default function ListingItem({
             <Link style={{ margin: `0 ${rhythm(1 / 4)}` }} to={data.slug}>
               {data.name}
             </Link>
+            {data.empire && (
+              <div style={{ margin: `0 ${rhythm(1 / 4)}` }}>
+                ({data.empire})
+              </div>
+            )}
           </div>
         </div>
       </td>

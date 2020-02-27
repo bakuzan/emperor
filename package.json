@@ -13,7 +13,7 @@
   },
   "scripts": {
     "develop": "gatsby develop",
-    "start": "gatsby develop",
+    "start": "yarn clean && gatsby develop",
     "build": "gatsby build",
     "clean": "gatsby clean",
     "pretty": "lint-staged",
@@ -22,12 +22,10 @@
   },
   "lint-staged": {
     "{,src,gatsby}/**/*.{ts,tsx}": [
-      "npm run lint",
-      "git add"
+      "npm run lint"
     ],
     "{,src,gatsby}/**/*.{js}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "husky": {

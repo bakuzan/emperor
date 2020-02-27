@@ -20,6 +20,13 @@ export default (props: HomeProps) => {
         description="Emperors of Rome displayed in chronological order"
       />
 
+      <p>A chronological list of the men (and women) to don the purple.</p>
+      <p>
+        You may notice that the list ends prematurely - this will be rectified
+        when I have time, with the goal of including all emperors up to the fall
+        of the Byzantine Empire in 1453.
+      </p>
+
       <Listing
         title="Roman Emperors, in chronological order"
         data={items}
@@ -32,7 +39,7 @@ export default (props: HomeProps) => {
 
 export const query = graphql`
   query EmperorsQuery {
-    allEmperorsJson {
+    allEmperorsJson(sort: { order: DESC, fields: daysSinceReignStart }) {
       nodes {
         id
         slug
@@ -45,11 +52,13 @@ export const query = graphql`
           }
         }
         house
+        birthplace
         succession
         reignStart
         reignEnd
         reignLengthInDays
-        birthplace
+        daysSinceReignStart
+        empire
       }
     }
   }

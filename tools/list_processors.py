@@ -11,7 +11,13 @@ def process_regin_date(txt):
 
     if "," in txt:
         other, year = txt.split(",")
-        month, day = other.split(" ")
+        parts = other.split(" ")
+        if len(parts) == 2:
+            month, day = parts
+        else:
+            month = parts[0]
+            day = ""
+
         return "{0} {1} {2}".format(day, month, year)
 
     if " " in txt:
