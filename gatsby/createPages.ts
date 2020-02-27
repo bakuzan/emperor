@@ -25,7 +25,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
 
   const json = await graphql<AllQuery<any, 'allEmperorsJson'>>(`
     {
-      allEmperorsJson {
+      allEmperorsJson(sort: { order: DESC, fields: daysSinceReignStart }) {
         edges {
           node {
             slug
