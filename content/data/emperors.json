@@ -660,7 +660,8 @@
     "deathplace": "Unknown",
     "reignStart": "1 April 286",
     "reignEnd": "1 May 305",
-    "house": "None"
+    "house": "None",
+    "empire": "West"
   },
   {
     "slug": "Galerius",
@@ -673,7 +674,8 @@
     "deathplace": "Serdica",
     "reignStart": "1 May 305",
     "reignEnd": "May 311",
-    "house": "None"
+    "house": "None",
+    "empire": "East"
   },
   {
     "slug": "Constantius_Chlorus",
@@ -686,7 +688,8 @@
     "deathplace": "Eboracum, Britannia",
     "reignStart": "1 May 305",
     "reignEnd": "25 July 306",
-    "house": "Constantinian"
+    "house": "Constantinian",
+    "empire": "West"
   },
   {
     "slug": "Valerius_Severus",
@@ -699,7 +702,8 @@
     "deathplace": "Tres Tabernae",
     "reignStart": "July 306",
     "reignEnd": "April 307",
-    "house": "None"
+    "house": "None",
+    "empire": "West"
   },
   {
     "slug": "Constantine_the_Great",
@@ -725,6 +729,143 @@
     "deathplace": "Rome",
     "reignStart": "28 October 306",
     "reignEnd": "28 October 312",
+    "house": "None",
+    "empire": "West"
+  },
+  {
+    "slug": "Licinius",
+    "name": "Licinius",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Licinius_gold_multiple_CdM_Beistegui_232.jpg/100px-Licinius_gold_multiple_CdM_Beistegui_232.jpg",
+    "succession": "Son-in-law of Constantius Chlorus, appointed Augustus in the west by Galerius in 308, in opposition to Maxentius; became Augustus in the east in 311 after the death of Galerius (shared with Maximinus II); defeated Maximinus II in civil war to become sole eastern Augustus in 313; appointed Valerius Valens in 317, and Martinian in 324 as western Augustus, in opposition to Constantine, both being executed within weeks.",
+    "reignStart": "11 November 308",
+    "reignEnd": "18 September 324",
+    "empire": "East",
+    "dateOfBirth": "c. 263",
+    "birthplace": "Moesia Superior, near Zajear in modern-day Serbia",
+    "dateOfDeath": "Spring of 325",
+    "deathplace": "Thessalonica",
     "house": "None"
+  },
+  {
+    "slug": "Maximinus_II",
+    "name": "Maximinus II",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Daza01_pushkin.jpg/100px-Daza01_pushkin.jpg",
+    "succession": "Nephew of Galerius, adopted as Caesar and his heir in 305; succeeded as Augustus (shared with Licinius I) in 311",
+    "reignStart": "1 May 311",
+    "reignEnd": "August 313",
+    "empire": "East",
+    "dateOfBirth": "20 November c. 270",
+    "birthplace": "near Felix Romuliana (Gamzigrad, Serbia)",
+    "dateOfDeath": "August 313",
+    "deathplace": "Unknown",
+    "house": "None"
+  },
+  {
+    "slug": "Constantine_II_(emperor)",
+    "name": "Constantine II",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Campidoglio%2C_Roma_-_Costantino_II_cesare_dettaglio.jpg/100px-Campidoglio%2C_Roma_-_Costantino_II_cesare_dettaglio.jpg",
+    "succession": "Son of Constantine I; appointed Caesar in 317, succeeded as joint Augustus with his brothers Constantius II and Constans I",
+    "reignStart": "22 May 337",
+    "reignEnd": "340",
+    "empire": "West",
+    "dateOfBirth": "February 316",
+    "birthplace": "Arelate, Viennensis",
+    "dateOfDeath": "340",
+    "deathplace": "Aquileia, Italia",
+    "house": "Constantinian"
+  },
+  {
+    "slug": "Constantius_II",
+    "name": "Constantius II",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Constance_II_Colosseo_Rome_Italy.jpg/100px-Constance_II_Colosseo_Rome_Italy.jpg",
+    "succession": "Son of Constantine I; succeeded as joint Augustus with his brothers Constantine II and Constans I; sole emperor from 350",
+    "reignStart": "22 May 337",
+    "reignEnd": "3 November 361",
+    "dateOfBirth": "7 August 317",
+    "birthplace": "Sirmium, Pannonia Inferior (Sremska Mitrovica, Serbia)",
+    "dateOfDeath": "3 November 361",
+    "deathplace": "Mopsuestia, Cilicia",
+    "house": "Constantinian"
+  },
+  {
+    "slug": "Constans_I",
+    "name": "Constans I",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Emperor_Constans_Louvre_Ma1021.jpg/100px-Emperor_Constans_Louvre_Ma1021.jpg",
+    "succession": "Son of Constantine I; succeeded as joint Augustus with his brothers Constantine II and Constantius II",
+    "reignStart": "22 May 337",
+    "reignEnd": "350",
+    "empire": "West",
+    "dateOfBirth": "c. 323",
+    "birthplace": "Unknown",
+    "dateOfDeath": "February 350",
+    "deathplace": "Vicus Helena, southwestern Gaul",
+    "house": "Constantinian"
+  },
+  {
+    "slug": "Vetranio",
+    "name": "Vetranio",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Solidus_Vetranio_%28obverse%29.jpg/100px-Solidus_Vetranio_%28obverse%29.jpg",
+    "succession": "General of Constans, proclaimed Caesar against Magnentius and temporarily accepted as Augustus of the west by Constantius II.",
+    "reignStart": "1 March 350",
+    "reignEnd": "25 December 350",
+    "empire": "West",
+    "dateOfBirth": "Unknown",
+    "birthplace": "Moesia in modern Serbia",
+    "dateOfDeath": "c. 356",
+    "deathplace": "Bithynia",
+    "house": "None"
+  },
+  {
+    "slug": "Julian_(emperor)",
+    "name": "Julian",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Giuliano_l%27Apostata%2C_IV_secolo%2C_Museo_archeologico_nazionale%2C_Atene.jpg/100px-Giuliano_l%27Apostata%2C_IV_secolo%2C_Museo_archeologico_nazionale%2C_Atene.jpg",
+    "succession": "Cousin of Constantius II; made Caesar of the west in 355; proclaimed Augustus by his troops in 360; sole emperor after the death of Constantius",
+    "reignStart": "February 360",
+    "reignEnd": "26 June 363",
+    "dateOfBirth": "331 or 332",
+    "birthplace": "Constantinople",
+    "dateOfDeath": "26 June 363",
+    "deathplace": "Frygium, Mesopotamia",
+    "house": "Constantinian"
+  },
+  {
+    "slug": "Jovian_(emperor)",
+    "name": "Jovian",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Jovian1.jpg/100px-Jovian1.jpg",
+    "succession": "General of Julian's army; proclaimed emperor by the troops on Julian's death",
+    "reignStart": "26 June 363",
+    "reignEnd": "17 February 364",
+    "dateOfBirth": "331",
+    "birthplace": "Singidunum (modern Belgrade, Serbia)",
+    "dateOfDeath": "17 February 364",
+    "deathplace": "Unknown",
+    "house": "None"
+  },
+  {
+    "slug": "Valentinian_I",
+    "name": "Valentinian I",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Valentiniano_I_%28emperador%29.jpg/100px-Valentiniano_I_%28emperador%29.jpg",
+    "succession": "Elected to replace Jovian by the army",
+    "reignStart": "26 February 364",
+    "reignEnd": "17 November 375",
+    "dateOfBirth": "33 July 321",
+    "birthplace": "Cibalae, Pannonia Secunda (Vinkovci, present-day Croatia)",
+    "dateOfDeath": "17 November 375",
+    "deathplace": "Unknown",
+    "house": "Valentinian"
+  },
+  {
+    "slug": "Valens",
+    "name": "Valens",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Valens_Honorius_Musei_Capitolini_MC494.jpg/100px-Valens_Honorius_Musei_Capitolini_MC494.jpg",
+    "succession": "Brother of Valentinian I, appointed co-augustus (for the east) by him",
+    "reignStart": "28 March 364",
+    "reignEnd": "9 August 378",
+    "empire": "East",
+    "dateOfBirth": "328",
+    "birthplace": "Cibalae, near Sirmium, recent town of Vinkovci in Croatia",
+    "dateOfDeath": "9 August 378",
+    "deathplace": "Unknown",
+    "house": "Valentinian"
   }
 ]

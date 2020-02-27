@@ -5,7 +5,7 @@ from os.path import abspath, join, dirname
 from bs4 import BeautifulSoup
 from config import load_config
 from fetch import simple_get
-from list_processors import get_slug, get_name, get_image_url, get_reign
+from list_processors import get_slug, get_name, get_image_url, get_reign, get_empire
 from node_processors import set_birth, set_death, set_reign, set_house
 from file import load_json, write_file
 from utils import clean_text, prepare_html_output, json_dump
@@ -26,7 +26,8 @@ def get_data_filepath(filename):
     return abspath(join(dirname(__file__), "../content/data/", filename))
 
 
-def do_list_scrape(overwrite):
+def do_list_scrape(index, limit, overwrite):
+    endex = index + limit
     list_of_emperors = "https://en.wikipedia.org/wiki/List_of_Roman_emperors"
     page = simple_get(list_of_emperors)
 
@@ -39,8 +40,10 @@ def do_list_scrape(overwrite):
 
     html = BeautifulSoup(page, "html.parser")
     rows = html.select(".wikitable > tbody > tr")
-    items = [tr.find_all("td") for tr in rows if len(tr.find_all("td")) > 0]
+    row_cells = [tr.find_all("td")
+                 for tr in rows if len(tr.find_all("td")) > 0]
 
+    items = row_cells[:endex]
     for cells in items:
         img = get_image_url(cells[0])
         name = get_name(cells[1])
@@ -50,6 +53,7 @@ def do_list_scrape(overwrite):
         # TODO
         # died_when, died_where_why = get_death_info(cells[6])
         start, end = get_reign(cells[4])
+        empire = get_empire(cells[1])
 
         emp = {
             "slug": slug,
@@ -59,6 +63,9 @@ def do_list_scrape(overwrite):
             "reignStart": start,
             "reignEnd": end
         }
+
+        if empire != "":
+            emp["empire"] = empire
 
         g = (i for i, e in enumerate(emperors) if e["slug"] == slug)
         index = next(g, -1)
@@ -85,7 +92,7 @@ def do_detail_scrape(index, limit, overwrite):
 
         set_birth(html, item)
         set_death(html, item)
-        set_reign(html, item)
+        # set_reign(html, item)
         set_house(html, item)
 
         photo = html.select("td.photo").pop()
@@ -137,7 +144,7 @@ if __name__ == "__main__":
         sys.exit()
 
     if int(mode) == modes.get("list"):
-        do_list_scrape(overwrite)
+        do_list_scrape(start_index, limit, overwrite)
         print("Finished writing emperors.json.")
         sys.exit()
 

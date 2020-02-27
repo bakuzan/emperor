@@ -74,4 +74,16 @@ def get_reign(cell):
         start = ""
         end = ""
 
-    return start, end
+    return clean_text(start), clean_text(end)
+
+
+def get_empire(cell):
+    txt = clean_text(cell.get_text())
+
+    if "(EAST and WEST)" in txt:
+        return ""
+
+    if "(WEST)" in txt:
+        return "West"
+
+    return "East"

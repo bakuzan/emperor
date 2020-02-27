@@ -8,7 +8,7 @@ def has_numbers(txt):
 
 
 def clean_text(txt):
-    return txt.replace("\n", "").strip()
+    return txt.replace("\n", "").replace("  ", " ").strip()
 
 
 def prepare_html_output(soup):

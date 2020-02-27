@@ -5,7 +5,8 @@
     { "slug": "Vespasian", "rank": 3 },
     { "slug": "Hadrian", "rank": 4 },
     { "slug": "Marcus_Aurelius", "rank": 5 },
-    { "slug": "Claudius", "rank": 6 }
+    { "slug": "Aurelian", "rank": 6 },
+    { "slug": "Claudius", "rank": 7 }
   ],
   "bottom5": [
     { "slug": "Elagabalus", "rank": 5 },
