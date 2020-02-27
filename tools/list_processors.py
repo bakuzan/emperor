@@ -86,4 +86,7 @@ def get_empire(cell):
     if "(WEST)" in txt:
         return "West"
 
-    return "East"
+    if "(EAST)" in txt:
+        return "East"
+
+    return ""
