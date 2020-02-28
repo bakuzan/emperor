@@ -24,7 +24,9 @@ def process_regin_date(txt):
         parts = txt.split(" ")
 
         if len(parts) == 3:
-            return "{0} {1} {2}".format(parts[1], parts[0], parts[2])
+            date = parts[1] if has_numbers(parts[1]) else parts[0]
+            month = parts[0] if has_numbers(parts[1]) else parts[1]
+            return "{0} {1} {2}".format(date, month, parts[2])
 
     return txt
 

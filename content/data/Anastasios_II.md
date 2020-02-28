@@ -1,0 +1,5 @@
+<div class="photo" colspan="2" style="text-align: center; margin: 25px 0 10px;"><a class="image" href="https://en.wikipedia.org/wiki/File:Solidus_of_Anastasius_II.jpg"><img alt="Solidus of Anastasius II.jpg" data-file-height="234" data-file-width="239" decoding="async" height="215" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Solidus_of_Anastasius_II.jpg/220px-Solidus_of_Anastasius_II.jpg" srcset="https://upload.wikimedia.org/wikipedia/commons/e/e1/Solidus_of_Anastasius_II.jpg 1.5x" width="220"/></a><div style="line-height:normal;padding-bottom:0.2em;padding-top:0.2em;">A coin of Anastasius II</div></div>
+
+[comment]: # 'breakpoint'
+<p><b>Anastasius</b> (<a href="https://en.wikipedia.org/wiki/Greek_language" title="Greek language">Greek</a>: Ἀρτέμιος Ἀναστάσιος Β΄), known in English as <b>Anastasius II</b> or <b>Anastasius II</b> (died 719), was the <a class="mw-redirect" href="https://en.wikipedia.org/wiki/Byzantine_Emperor" title="Byzantine Emperor">Byzantine Emperor</a> from 713 to 715.
+</p>

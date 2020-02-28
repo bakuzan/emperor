@@ -77,11 +77,12 @@ def do_list_scrape(index, limit, overwrite):
 
 
 def do_detail_scrape(index, limit, overwrite):
-    endex = index + limit
+    start = index - 1
+    end = index + limit
     filepath = get_data_filepath("emperors.json")
     data = load_json(filepath)
 
-    items = data[index:endex]
+    items = data[start:end]
     for item in items:
         item_slug = item["slug"]
         item_url = "https://en.wikipedia.org/wiki/{0}".format(item_slug)
@@ -126,7 +127,7 @@ def do_detail_scrape(index, limit, overwrite):
         write_file(filepath, output)
 
     print("Updating emperor list...")
-    data[index:endex] = items
+    data[start:end] = items
     filepath = get_data_filepath("emperors.json")
     json_dump(filepath, data)
 
