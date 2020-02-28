@@ -1,14 +1,13 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
-import NewTabLink from 'meiko/NewTabLink';
+import filterFalsey from 'ayaka/helpers/filterFalsey';
 
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import Listing from '@/components/Listing';
 import { Emperor, RankedEmperor } from '@/interfaces/Emperor';
 import { EMPPage } from '@/interfaces/EMPPage';
-import filterFalsey from '@/utils/filterFalsey';
 
 interface Rank {
   slug: string;

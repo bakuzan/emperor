@@ -1,0 +1,5 @@
+<div class="photo" colspan="2" style="text-align: center; margin: 25px 0 10px;"><a class="image" href="https://en.wikipedia.org/wiki/File:John_V_Palaiologos.jpg"><img alt="John V Palaiologos.jpg" data-file-height="280" data-file-width="206" decoding="async" height="204" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/John_V_Palaiologos.jpg/150px-John_V_Palaiologos.jpg" srcset="https://upload.wikimedia.org/wikipedia/commons/a/af/John_V_Palaiologos.jpg 1.5x" width="150"/></a><div style="line-height:normal;padding-bottom:0.2em;padding-top:0.2em;">John V Palaiologos</div></div>
+
+[comment]: # 'breakpoint'
+<p><b>John V Palaiologos</b> or <b>Palaeologus</b> (<a href="https://en.wikipedia.org/wiki/Greek_language" title="Greek language">Greek</a>: <span lang="el"><span lang="grc" title="Ancient Greek language text">Ίωάννης Ε' Παλαιολόγος</span></span>, <i>Iōannēs V Palaiologos</i>; 18 June 1332 – 16 February 1391) was a Byzantine emperor, who succeeded his father in 1341 at the age of eight.
+</p>

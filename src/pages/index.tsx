@@ -20,11 +20,10 @@ export default (props: HomeProps) => {
         description="Emperors of Rome displayed in chronological order"
       />
 
-      <p>A chronological list of the men (and women) to don the purple.</p>
       <p>
-        You may notice that the list ends prematurely - this will be rectified
-        when I have time, with the goal of including all emperors up to the fall
-        of the Byzantine Empire in 1453.
+        A chronological list of the men (and women) to don the purple.
+        <br /> This includes all emperors from Augustus up to the fall of the
+        Byzantine Empire in 1453.
       </p>
 
       <Listing
@@ -57,8 +56,8 @@ export const query = graphql`
         reignStart
         reignEnd
         reignLengthInDays
-        daysSinceReignStart
         empire
+        reignCount
       }
     }
   }

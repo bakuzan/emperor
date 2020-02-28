@@ -4,6 +4,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 
+import getOrdinalSuffix from 'ayaka/getOrdinalSuffix';
 import { Emperor } from '@/interfaces/Emperor';
 import { rhythm } from '@/utils/typography';
 import { displayReignLength } from '@/utils/displayReignLength';
@@ -64,6 +65,9 @@ export default function ListingItem({
       </td>
       <td column-title="Succession" style={{ maxWidth: `300px` }}>
         {data.succession}
+        {data.reignCount !== undefined && (
+          <div>{getOrdinalSuffix(data.reignCount)} Reign</div>
+        )}
       </td>
       <td column-title="Reign Start">{data.reignStart}</td>
       <td column-title="Reign End">{data.reignEnd}</td>

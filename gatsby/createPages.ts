@@ -68,6 +68,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
 
     if (!node) {
       console.warn(`No node found for emperor slug: ${itemSlug}`);
+      process.exit(0);
     } else {
       const previous = idx === 0 ? null : findPage(aItems, idx - 1, pages);
       const next = idx === maxIndex ? null : findPage(aItems, idx + 1, pages);

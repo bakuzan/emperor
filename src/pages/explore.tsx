@@ -104,6 +104,7 @@ export const query = graphql`
         daysSinceReignStart
         daysSinceReignEnd
         empire
+        reignCount
       }
     }
   }
