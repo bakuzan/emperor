@@ -77,7 +77,7 @@ def do_list_scrape(index, limit, overwrite):
 
 
 def do_detail_scrape(index, limit, overwrite):
-    start = index - 1
+    start = index
     end = index + limit
     filepath = get_data_filepath("emperors.json")
     data = load_json(filepath)

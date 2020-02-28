@@ -1,0 +1,5 @@
+<div class="photo" colspan="2" style="text-align: center; margin: 25px 0 10px;"><a class="image" href="https://en.wikipedia.org/wiki/File:Michael_VI_tetarteron_(reverse).jpg"><img alt="Michael VI tetarteron (reverse).jpg" data-file-height="158" data-file-width="158" decoding="async" height="158" src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Michael_VI_tetarteron_%28reverse%29.jpg" width="158"/></a><div style="line-height:normal;padding-bottom:0.2em;padding-top:0.2em;">Gold <i><a href="https://en.wikipedia.org/wiki/Tetarteron" title="Tetarteron">tetarteron</a></i> of Michael's reign</div></div>
+
+[comment]: # 'breakpoint'
+<p><b>Michael VI Bringas</b> (<a href="https://en.wikipedia.org/wiki/Greek_language" title="Greek language">Greek</a>: <span lang="el">Μιχαήλ ΣΤ΄ Βρίγγας</span>, <i>Mikhaēl VI Bringas</i>), called <i>Stratiotikos</i> or <i>Stratioticus</i> ("the Military One", "the Warlike", or "the Bellicose") or <i>Gerontas</i> ("the Old"), reigned as <a class="mw-redirect" href="https://en.wikipedia.org/wiki/Byzantine_emperor" title="Byzantine emperor">Byzantine emperor</a> from 1056 to 1057.
+</p>
