@@ -65,7 +65,7 @@ export default function ListingItem({
       </td>
       <td column-title="Succession" style={{ maxWidth: `300px` }}>
         {data.succession}
-        {data.reignCount !== undefined && (
+        {data.reignCount && (
           <div>{getOrdinalSuffix(data.reignCount)} Reign</div>
         )}
       </td>

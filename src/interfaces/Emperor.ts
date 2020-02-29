@@ -14,8 +14,8 @@ export interface Emperor {
   reignLengthInDays: number;
   daysSinceReignStart: number;
   daysSinceReignEnd: number;
-  empire?: string;
-  reignCount?: number;
+  empire?: string | null;
+  reignCount?: number | null;
 }
 
 export interface RankedEmperor extends Emperor {
