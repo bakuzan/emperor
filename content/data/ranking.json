@@ -1,12 +1,14 @@
 {
   "top10": [
     { "slug": "Augustus", "rank": 1 },
-    { "slug": "Trajan", "rank": 2 },
-    { "slug": "Vespasian", "rank": 3 },
-    { "slug": "Hadrian", "rank": 4 },
-    { "slug": "Marcus_Aurelius", "rank": 5 },
-    { "slug": "Aurelian", "rank": 6 },
-    { "slug": "Claudius", "rank": 7 }
+    { "slug": "Constantine_the_Great", "rank": 2 },
+    { "slug": "Diocletian", "rank": 3 },
+    { "slug": "Trajan", "rank": 4 },
+    { "slug": "Vespasian", "rank": 5 },
+    { "slug": "Hadrian", "rank": 6 },
+    { "slug": "Marcus_Aurelius", "rank": 7 },
+    { "slug": "Aurelian", "rank": 8 },
+    { "slug": "Claudius", "rank": 9 }
   ],
   "bottom5": [
     { "slug": "Elagabalus", "rank": 5 },
