@@ -1,6 +1,10 @@
 import './Table.scss';
 import React from 'react';
+
 import { Button } from 'meiko/Button';
+import Icons from 'meiko/constants/icons';
+
+import { useMountedOnClient } from '@/hooks/useMountedOnClient';
 
 export interface TableHeader<T extends string = any>
   extends React.HTMLProps<HTMLTableHeaderCellElement> {
@@ -13,7 +17,7 @@ interface TableProps<T extends string> {
   headers: TableHeader<T>[];
   children?: React.ReactNode[];
   showHeaders?: boolean;
-  sortIcon?: string;
+  isSortDesc?: boolean;
   sortKey?: T;
   onSort?: (key: T) => void;
 }
@@ -23,19 +27,24 @@ function Table<T extends string>({
   headers,
   children,
   showHeaders = true,
-  sortIcon,
+  isSortDesc,
   sortKey: activeSortKey,
   onSort,
   ...props
 }: TableProps<T>) {
+  const mounted = useMountedOnClient();
+  const sortIcon = isSortDesc ? Icons.down : Icons.up;
+
   return (
     <table style={{ ...style }} {...props}>
       <thead>
         <tr>
           {headers.map(({ text, sortKey, ...x }) => {
+            const isActiveSort = activeSortKey === sortKey;
+
             return (
               <th key={text} {...x} style={{ ...(x.style ?? {}) }}>
-                {onSort !== undefined && sortKey !== undefined ? (
+                {mounted && onSort !== undefined && sortKey !== undefined ? (
                   <Button
                     className="table-sort-button"
                     aria-label={`${text}. Click to sort on this column. Clicking again will toggle the sort direction.`}
@@ -52,13 +61,20 @@ function Table<T extends string>({
                       }}
                     >
                       <div>{text}</div>
-                      <div style={{ marginTop: `-5px` }}>
-                        {activeSortKey === sortKey ? sortIcon : ''}
+                      <div
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          height: `1rem`,
+                          margin: isSortDesc ? `0 0 auto` : `auto 0 0`
+                        }}
+                      >
+                        {isActiveSort ? sortIcon : ''}
                       </div>
                     </div>
                   </Button>
                 ) : (
-                  text
+                  <div style={{ padding: `5px` }}>{text}</div>
                 )}
               </th>
             );

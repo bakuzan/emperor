@@ -62,6 +62,10 @@ export default class HTML extends React.Component<EMPHTMLProps> {
             }}
           />
           {preBodyComponents}
+          <noscript>
+            This application requires javascript to run properly. Please turn
+            javascript on to get the intended experience.
+          </noscript>
           <div
             key={`body`}
             id="___gatsby"

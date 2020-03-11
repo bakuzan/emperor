@@ -7,6 +7,7 @@ import { useGlobalStyles } from 'meiko/hooks/useGlobalStyles';
 import { rhythm } from '@/utils/typography';
 import Header from './Header';
 import Footer from './Footer';
+import { useMountedOnClient } from '@/hooks/useMountedOnClient';
 
 const HIDDEN_ALERT_KEY = 'empHiddenAlerts';
 const headerHeight = 73;
@@ -27,6 +28,7 @@ interface LayoutProps extends React.HTMLProps<HTMLDivElement> {}
 function Layout({ children }: LayoutProps) {
   useGlobalStyles({ includeFont: false });
 
+  const mounted = useMountedOnClient();
   const [alerts, setAlerts] = useState<AlertMessage[]>([]);
 
   function dismissAlertMessage() {
@@ -61,9 +63,11 @@ function Layout({ children }: LayoutProps) {
           <NavLink to="/ranking" partiallyActive={true}>
             Ranking
           </NavLink>
-          <NavLink to="/explore" partiallyActive={true}>
-            Explore
-          </NavLink>
+          {mounted && (
+            <NavLink to="/explore" partiallyActive={true}>
+              Explore
+            </NavLink>
+          )}
         </nav>
         <main
           style={{

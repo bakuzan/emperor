@@ -1,7 +1,5 @@
 import React from 'react';
 
-import Icons from 'meiko/constants/icons';
-
 import Table, { TableHeader } from '../Table';
 import ListingItem, { ListingItemProps } from './ListingItem';
 import { Emperor } from '@/interfaces/Emperor';
@@ -43,7 +41,6 @@ function Listing<T extends Emperor>({
 
   const groups = orderedGroupBy(props.data, props.grouping);
   const tableGroups = Array.from(groups.entries());
-  const sortIcon = props.isSortDesc ? Icons.down : Icons.up;
 
   return (
     <section>
@@ -69,7 +66,7 @@ function Listing<T extends Emperor>({
         {showInSingleTable && (
           <Table
             headers={headers}
-            sortIcon={sortIcon}
+            isSortDesc={props.isSortDesc}
             sortKey={props.sortKey}
             onSort={props.onSortToggle}
           >

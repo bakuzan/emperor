@@ -6,6 +6,7 @@ import ClearableInput from 'meiko/ClearableInput';
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import Listing, { SortKey } from '@/components/Listing';
+import { useMountedOnClient } from '@/hooks/useMountedOnClient';
 import { Emperor } from '@/interfaces/Emperor';
 import { EMPPage } from '@/interfaces/EMPPage';
 import orderEmperors from '@/utils/orderEmperors';
@@ -34,6 +35,7 @@ function getTitle(key: SortKey, isDesc: boolean) {
 }
 
 export default (props: HomeProps) => {
+  const mounted = useMountedOnClient();
   const [searchString, setSearchString] = useState('');
   const [sortKey, setSortKey] = useState<SortKey>('daysSinceReignStart');
   const [isDesc, setIsDesc] = useState<boolean>(false);
@@ -54,18 +56,20 @@ export default (props: HomeProps) => {
         title="Explore"
         description="Explore the Emperors of Rome searching for them by name and sorting on a variety of fields."
       />
-      <div>
-        <ClearableInput
-          id="search"
-          name="search"
-          label="Filter emperors by name"
-          value={searchString}
-          onChange={(e) => {
-            const element = e.target as HTMLInputElement;
-            setSearchString(element.value);
-          }}
-        />
-      </div>
+      {mounted && (
+        <div>
+          <ClearableInput
+            id="search"
+            name="search"
+            label="Filter emperors by name"
+            value={searchString}
+            onChange={(e) => {
+              const element = e.target as HTMLInputElement;
+              setSearchString(element.value);
+            }}
+          />
+        </div>
+      )}
       <Listing
         title={title}
         data={filteredItems}
