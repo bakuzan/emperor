@@ -4,6 +4,8 @@ import { graphql } from 'gatsby';
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import Listing from '@/components/Listing';
+import GoTo from '@/components/GoTo';
+
 import { Emperor } from '@/interfaces/Emperor';
 import { EMPPage } from '@/interfaces/EMPPage';
 
@@ -26,6 +28,7 @@ export default (props: HomeProps) => {
         Byzantine Empire in 1453.
       </p>
 
+      <GoTo data={items} />
       <Listing
         title="Roman Emperors, in chronological order"
         data={items}

@@ -6,6 +6,8 @@ import filterFalsey from 'ayaka/helpers/filterFalsey';
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import Listing from '@/components/Listing';
+import GoTo from '@/components/GoTo';
+
 import { Emperor, RankedEmperor } from '@/interfaces/Emperor';
 import { EMPPage } from '@/interfaces/EMPPage';
 
@@ -31,6 +33,9 @@ export default (props: RankingProps) => {
 
   const topEmperors = top10.map(mapToRanked).filter(filterFalsey);
   const bottomEmperors = bottom5.map(mapToRanked).filter(filterFalsey);
+  const rankedEmperors = [...topEmperors, ...bottomEmperors].sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
 
   return (
     <Layout>
@@ -46,7 +51,7 @@ export default (props: RankingProps) => {
         Emperors.
       </p>
       <p> Just for contrast, I've included the bottom five as well.</p>
-
+      <GoTo data={rankedEmperors} />
       <Listing
         title="Top 10 Roman Emperors"
         data={topEmperors}

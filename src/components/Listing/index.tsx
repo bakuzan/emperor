@@ -1,7 +1,9 @@
 import React from 'react';
 
+import GoTo from '../GoTo';
 import Table, { TableHeader } from '../Table';
 import ListingItem, { ListingItemProps } from './ListingItem';
+
 import { Emperor } from '@/interfaces/Emperor';
 import orderedGroupBy from '@/utils/orderedGroupBy';
 
@@ -47,6 +49,7 @@ function Listing<T extends Emperor>({
       <header>
         <h3 style={{ color: `inherit` }}>{title}</h3>
       </header>
+
       <div>
         {!showInSingleTable &&
           tableGroups.map(([key, grp]) => (

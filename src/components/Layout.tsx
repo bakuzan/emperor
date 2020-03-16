@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { Link, GatsbyLinkProps } from 'gatsby';
 
 import Alert, { AlertMessage } from 'meiko/Alert';
+import ScrollTopButton from 'meiko/ScrollTopButton';
 import { useGlobalStyles } from 'meiko/hooks/useGlobalStyles';
-
-import { rhythm } from '@/utils/typography';
 import Header from './Header';
 import Footer from './Footer';
+
 import { useMountedOnClient } from '@/hooks/useMountedOnClient';
+import { rhythm } from '@/utils/typography';
 
 const HIDDEN_ALERT_KEY = 'empHiddenAlerts';
 const headerHeight = 73;
@@ -78,6 +79,7 @@ function Layout({ children }: LayoutProps) {
           {children}
         </main>
         <Footer />
+        <ScrollTopButton offset={200} />
       </div>
     </>
   );

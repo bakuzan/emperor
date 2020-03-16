@@ -8,6 +8,7 @@ import getOrdinalSuffix from 'ayaka/getOrdinalSuffix';
 import { Emperor } from '@/interfaces/Emperor';
 import { rhythm } from '@/utils/typography';
 import { displayReignLength } from '@/utils/displayReignLength';
+import slugToIdentifier from '@/utils/slugToIdentifier';
 
 export interface ListingItemProps {
   data: Emperor;
@@ -24,8 +25,10 @@ export default function ListingItem({
   showGroup,
   preserveGroupOrientation
 }: ListingItemProps) {
+  const hash = slugToIdentifier(data.slug);
+
   return (
-    <tr className="emperor">
+    <tr id={hash} className="emperor">
       {showGroup && (
         <td
           className={classNames('emperor__group-cell', {

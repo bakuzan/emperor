@@ -6,6 +6,8 @@ import ClearableInput from 'meiko/ClearableInput';
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import Listing, { SortKey } from '@/components/Listing';
+import GoTo from '@/components/GoTo';
+
 import { useMountedOnClient } from '@/hooks/useMountedOnClient';
 import { Emperor } from '@/interfaces/Emperor';
 import { EMPPage } from '@/interfaces/EMPPage';
@@ -70,6 +72,7 @@ export default (props: HomeProps) => {
           />
         </div>
       )}
+      <GoTo data={filteredItems} />
       <Listing
         title={title}
         data={filteredItems}

@@ -17,6 +17,7 @@ export function onInitialClientRender() {
     const offset = getTargetOffset(window.location.hash);
 
     if (offset !== null) {
+      console.log(offset);
       window.scrollTo(0, offset);
     }
   });

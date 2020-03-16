@@ -10,6 +10,11 @@ $brilliant-lavender: #f4bbff;
   --primary-contrast: #fff;
 
   --alt-colour: #{$brilliant-lavender};
+  --radio-toggle--box-shadow-colour: #{$brilliant-lavender};
+
+  --scroll-top-button--background: #{$brilliant-lavender};
+  --scroll-top-button--background-hover: #{darken($brilliant-lavender, 10%)};
+  --scroll-top-button--colour: #000;
 }
 
 .theme--dark {
@@ -20,6 +25,11 @@ $brilliant-lavender: #f4bbff;
   --primary-contrast: #{$tyrian-purple};
 
   --alt-colour: #{$twilight-lavender};
+  --radio-toggle--box-shadow-colour: #{$twilight-lavender};
+
+  --scroll-top-button--background: #{$twilight-lavender};
+  --scroll-top-button--background-hover: #{lighten($twilight-lavender, 10%)};
+  --scroll-top-button--colour: #fff;
 }
 
 .theme {
@@ -43,9 +53,13 @@ $brilliant-lavender: #f4bbff;
   top: 0px !important; // TODO Fix this in meiko
 }
 
-.clearable-input__input {
-  background: inherit;
-  color: inherit;
+.clearable-input {
+  max-height: none !important;
+
+  &__input {
+    background: inherit;
+    color: inherit;
+  }
 }
 .has-float-label .clearable-input__input:focus {
   border-color: var(--primary-colour);
@@ -55,4 +69,14 @@ $brilliant-lavender: #f4bbff;
   background-color: var(--background-colour);
   color: var(--text-colour);
   z-index: 50;
+}
+
+.autocomplete__menu {
+  background-color: var(--background-colour);
+}
+.autocomplete-suggestion--active.autocomplete-suggestion--active {
+  border-color: var(--primary-colour);
+}
+.autocomplete-suggestion-highlight {
+  color: var(--primary-colour);
 }
