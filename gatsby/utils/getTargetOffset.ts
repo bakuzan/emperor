@@ -1,5 +1,5 @@
 function offset(element: HTMLElement) {
-  let offsetTop = element.offsetTop;
+  let offsetTop = 0;
 
   while (element) {
     offsetTop += element.offsetTop;
