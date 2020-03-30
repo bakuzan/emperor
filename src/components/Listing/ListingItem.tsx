@@ -66,7 +66,7 @@ export default function ListingItem({
           </div>
         </div>
       </td>
-      <td column-title="Succession" style={{ maxWidth: `300px` }}>
+      <td column-title="Succession" className="emperor__max-width-cell">
         {data.succession}
         {data.reignCount && (
           <div>{getOrdinalSuffix(data.reignCount)} Reign</div>
