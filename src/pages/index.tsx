@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
+import Tabs from 'meiko/Tabs';
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import Listing from '@/components/Listing';
@@ -32,13 +33,21 @@ export default (props: HomeProps) => {
       </p>
 
       <GoTo data={items} />
-      {mounted && <AnniversayHighlight items={items} />}
-      <Listing
-        title="Roman Emperors, in chronological order"
-        data={items}
-        grouping={(x) => x.house}
-        showInSingleTable
-      />
+      <Tabs.Container defaultTab="Chronological">
+        <Tabs.View name="Chronological">
+          <Listing
+            title="Roman Emperors, in chronological order"
+            data={items}
+            grouping={(x) => x.house}
+            showInSingleTable
+          />
+        </Tabs.View>
+        {mounted && (
+          <Tabs.View name="Anniversaries">
+            <AnniversayHighlight items={items} />
+          </Tabs.View>
+        )}
+      </Tabs.Container>
     </Layout>
   );
 };

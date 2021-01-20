@@ -4,3 +4,5 @@ export const Icons = Object.freeze({
   moon: '\uD83C\uDF19\uFE0E',
   sun: '\u2600\uFE0E'
 });
+
+export const anniversaryOffsetDays = 4;

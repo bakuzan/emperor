@@ -4,6 +4,7 @@ import daysDifferenceBetweenDates from 'ayaka/daysDifferenceBetweenDates';
 
 import Listing from '@/components/Listing';
 import { Emperor } from '@/interfaces/Emperor';
+import { anniversaryOffsetDays } from '@/consts';
 
 interface AnniversayHighlightProps<T extends Emperor> {
   items: T[];
@@ -28,7 +29,7 @@ function recentAnniversaryFilter<T extends Emperor>(x: T) {
     new Date(today.getFullYear(), index, Number(dayMaybe.trim()))
   );
 
-  return Math.abs(diff) <= 7;
+  return Math.abs(diff) <= anniversaryOffsetDays;
 }
 
 function AnniversayHighlight<T extends Emperor>({
@@ -43,10 +44,11 @@ function AnniversayHighlight<T extends Emperor>({
   return (
     <div id="anniversary-highlight">
       <Listing
-        title="Recent Emperor Reign Anniversaries"
+        title="Recent Emperor Ascension Anniversaries"
         data={filteredItems}
         grouping={(x) => 'Emperors'}
         showInSingleTable
+        noRowId
       />
     </div>
   );

@@ -18,6 +18,7 @@ interface ListingProps<T extends Emperor> {
   listItemComponent: React.FunctionComponent<ListingItemProps>;
   showInSingleTable: boolean;
   preserveGroupOrientation?: boolean;
+  noRowId?: boolean;
   isSortDesc?: boolean;
   sortKey?: SortKey;
   grouping: (x: T) => any;
@@ -61,6 +62,7 @@ function Listing<T extends Emperor>({
                   groupTotal={a.length}
                   showGroup={i === 0}
                   preserveGroupOrientation={props.preserveGroupOrientation}
+                  preventIdPropRender={props.noRowId}
                 />
               ))}
             </Table>
@@ -81,6 +83,7 @@ function Listing<T extends Emperor>({
                   groupTotal={a.length}
                   showGroup={i === 0}
                   preserveGroupOrientation={props.preserveGroupOrientation}
+                  preventIdPropRender={props.noRowId}
                 />
               ))
             )}
@@ -93,7 +96,8 @@ function Listing<T extends Emperor>({
 
 Listing.defaultProps = {
   listItemComponent: ListingItem,
-  showInSingleTable: false
+  showInSingleTable: false,
+  noRowId: false
 };
 
 export default Listing;

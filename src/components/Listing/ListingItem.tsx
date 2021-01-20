@@ -16,6 +16,7 @@ export interface ListingItemProps {
   groupTotal: number;
   showGroup: boolean;
   preserveGroupOrientation?: boolean;
+  preventIdPropRender?: boolean;
 }
 
 export default function ListingItem({
@@ -23,9 +24,10 @@ export default function ListingItem({
   group,
   groupTotal,
   showGroup,
-  preserveGroupOrientation
+  preserveGroupOrientation,
+  preventIdPropRender
 }: ListingItemProps) {
-  const hash = slugToIdentifier(data.slug);
+  const hash = preventIdPropRender ? undefined : slugToIdentifier(data.slug);
 
   return (
     <tr id={hash} className="emperor">

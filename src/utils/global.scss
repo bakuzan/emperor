@@ -36,6 +36,9 @@ $brilliant-lavender: #f4bbff;
   background-color: var(--background-colour);
   color: var(--text-colour);
 
+  --faded-out-background: #ccc;
+  --faded-out-colour: #000;
+
   --table-border-colour: var(--alt-colour);
   --table-cell-border-colour: var(--primary-colour);
 }
@@ -79,4 +82,27 @@ $brilliant-lavender: #f4bbff;
 }
 .autocomplete-suggestion-highlight {
   color: var(--primary-colour);
+}
+
+// Tabs
+.theme {
+  .tabs__panels {
+    border-top: 1px solid var(--primary-colour);
+  }
+  .tab-control:not(.tab-control--active) {
+    &:not(:hover),
+    .tab-control__button:not(:hover) {
+      background-color: var(--faded-out-background);
+      color: var(--faded-out-colour);
+      border-color: var(--faded-out-background);
+      border-bottom: none;
+    }
+  }
+  .tab-control--active,
+  .tab-control:hover {
+    border: {
+      color: var(--primary-colour);
+      bottom-color: var(--background-colour);
+    }
+  }
 }
