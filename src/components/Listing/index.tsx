@@ -1,6 +1,5 @@
 import React from 'react';
 
-import GoTo from '../GoTo';
 import Table, { TableHeader } from '../Table';
 import ListingItem, { ListingItemProps } from './ListingItem';
 

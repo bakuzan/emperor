@@ -5,7 +5,9 @@ import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import Listing from '@/components/Listing';
 import GoTo from '@/components/GoTo';
+import AnniversayHighlight from '@/components/AnniversayHighlight';
 
+import { useMountedOnClient } from '@/hooks/useMountedOnClient';
 import { Emperor } from '@/interfaces/Emperor';
 import { EMPPage } from '@/interfaces/EMPPage';
 
@@ -13,6 +15,7 @@ interface HomeProps
   extends EMPPage<{ allEmperorsJson: { nodes: Emperor[] } }> {}
 
 export default (props: HomeProps) => {
+  const mounted = useMountedOnClient();
   const items: Emperor[] = props.data.allEmperorsJson.nodes;
 
   return (
@@ -29,6 +32,7 @@ export default (props: HomeProps) => {
       </p>
 
       <GoTo data={items} />
+      {mounted && <AnniversayHighlight items={items} />}
       <Listing
         title="Roman Emperors, in chronological order"
         data={items}
