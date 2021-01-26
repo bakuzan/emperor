@@ -21,7 +21,7 @@ export default (props: HomeProps) => {
 
   return (
     <Layout>
-      {mounted && (
+      {!mounted && (
         <style>
           {`.tabs__controls {
             margin: 0;
