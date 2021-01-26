@@ -42,10 +42,27 @@ export default (props: HomeProps) => {
             showInSingleTable
           />
         </Tabs.View>
-        {mounted && (
+        {mounted ? (
           <Tabs.View name="Anniversaries">
             <AnniversayHighlight items={items} />
           </Tabs.View>
+        ) : (
+          <style>
+            {`.tabs__controls {
+            margin: 0;
+            list-style-type: none;
+          }
+  
+          .tab-control {
+            margin: 0;
+          }
+  
+          .tab-control__button {
+            background: none;
+            border: 0;
+            color: var(--background-colour);
+          }`}
+          </style>
         )}
       </Tabs.Container>
     </Layout>
