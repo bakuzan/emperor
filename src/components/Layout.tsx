@@ -79,7 +79,7 @@ function Layout({ children }: LayoutProps) {
           {children}
         </main>
         <Footer />
-        <ScrollTopButton offset={200} />
+        <ScrollTopButton style={{ zIndex: 100 }} offset={200} />
       </div>
     </>
   );
