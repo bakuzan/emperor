@@ -11,6 +11,10 @@
     { "slug": "Septimius_Severus", "rank": 9 },
     { "slug": "Claudius", "rank": 10 }
   ],
+  "mentions": [
+    { "slug": "Valentinian_I", "rank": 0 },
+    { "slug": "Julian_(emperor)", "rank": 0 }
+  ],
   "bottom5": [
     { "slug": "Elagabalus", "rank": 5 },
     { "slug": "Nero", "rank": 3 },

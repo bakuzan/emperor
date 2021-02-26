@@ -14,6 +14,7 @@ export type SortKey =
 
 interface ListingProps<T extends Emperor> {
   title: string;
+  descriptionContent: React.ReactNode;
   data: T[];
   listItemComponent: React.FunctionComponent<ListingItemProps>;
   showInSingleTable: boolean;
@@ -49,7 +50,7 @@ function Listing<T extends Emperor>({
       <header>
         <h3 style={{ color: `inherit` }}>{title}</h3>
       </header>
-
+      {props.descriptionContent}
       <div>
         {!showInSingleTable &&
           tableGroups.map(([key, grp]) => (
@@ -97,7 +98,8 @@ function Listing<T extends Emperor>({
 Listing.defaultProps = {
   listItemComponent: ListingItem,
   showInSingleTable: false,
-  noRowId: false
+  noRowId: false,
+  descriptionContent: null
 };
 
 export default Listing;

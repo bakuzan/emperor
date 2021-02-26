@@ -10,6 +10,7 @@ import GoTo from '@/components/GoTo';
 
 import { Emperor, RankedEmperor } from '@/interfaces/Emperor';
 import { EMPPage } from '@/interfaces/EMPPage';
+import { rhythm } from '@/utils/typography';
 
 interface Rank {
   slug: string;
@@ -19,11 +20,15 @@ interface Rank {
 interface RankingProps
   extends EMPPage<{
     allEmperorsJson: { nodes: Emperor[] };
-    dataJson: { top10: Rank[]; bottom5: Rank[] };
+    dataJson: { top10: Rank[]; mentions: Rank[]; bottom5: Rank[] };
   }> {}
 
+const spacedOutPage = {
+  margin: `${rhythm(2 / 3)} 0`
+};
+
 export default (props: RankingProps) => {
-  const { top10, bottom5 } = props.data.dataJson;
+  const { top10, mentions, bottom5 } = props.data.dataJson;
   const emperors: Emperor[] = props.data.allEmperorsJson.nodes;
 
   function mapToRanked(x: Rank) {
@@ -32,10 +37,13 @@ export default (props: RankingProps) => {
   }
 
   const topEmperors = top10.map(mapToRanked).filter(filterFalsey);
+  const mentionsEmperors = mentions.map(mapToRanked).filter(filterFalsey);
   const bottomEmperors = bottom5.map(mapToRanked).filter(filterFalsey);
-  const rankedEmperors = [...topEmperors, ...bottomEmperors].sort((a, b) =>
-    a.name.localeCompare(b.name)
-  );
+  const rankedEmperors = [
+    ...topEmperors,
+    ...mentionsEmperors,
+    ...bottomEmperors
+  ].sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <Layout>
@@ -44,23 +52,46 @@ export default (props: RankingProps) => {
         description="My personal opinion on the best and worst Roman Emperors."
       />
 
-      <p>
-        Who was the best Emperor of Rome? How do you measure best? Without
-        getting too hung up on the reasoning, I've thrown out my personal top 10
-        emperors of Rome below. This will be updated as I learn about the
-        Emperors.
-      </p>
-      <p> Just for contrast, I've included the bottom five as well.</p>
       <GoTo data={rankedEmperors} />
       <Listing
         title="Top 10 Roman Emperors"
+        descriptionContent={
+          <p style={spacedOutPage}>
+            Who was the best Emperor of Rome? How do you measure best? Without
+            getting too hung up on the reasoning, I've thrown out my personal
+            top 10 emperors of Rome below. This will be updated as I learn about
+            the Emperors.
+          </p>
+        }
         data={topEmperors}
         grouping={(x) => x.rank}
         showInSingleTable
         preserveGroupOrientation
       />
+
+      <Listing
+        title="Honourable mentions"
+        descriptionContent={
+          <p style={spacedOutPage}>
+            The following Emperors didn't make the cut for a place in the Top
+            10. However, they still made an impression on me and would be first
+            in line to make the jump to the top 10.
+          </p>
+        }
+        data={mentionsEmperors}
+        sortKey={'name'}
+        grouping={(x) => 'Emperors'}
+        showInSingleTable
+      />
+
       <Listing
         title="The 5 Worst Roman Emperors"
+        descriptionContent={
+          <p style={spacedOutPage}>
+            To contrast the top 10, I've included a bottom five Emperors as
+            well.
+          </p>
+        }
         data={bottomEmperors}
         grouping={(x) => x.rank}
         showInSingleTable
@@ -95,6 +126,10 @@ export const query = graphql`
     }
     dataJson {
       top10 {
+        rank
+        slug
+      }
+      mentions {
         rank
         slug
       }
