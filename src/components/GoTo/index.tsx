@@ -100,6 +100,7 @@ function GoTo<T extends Emperor>({ data }: GoToProps<T>) {
         transform: `translateX(-50%) translateY(-50%)`,
         transition: `all 0.5s ease-in-out`,
         boxShadow: `0px 0px 4px 1px var(--primary-colour)`,
+        zIndex: 100,
         ...displayStyle
       }}
     >
