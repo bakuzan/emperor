@@ -11,6 +11,7 @@ import GoTo from '@/components/GoTo';
 import { Emperor, RankedEmperor } from '@/interfaces/Emperor';
 import { EMPPage } from '@/interfaces/EMPPage';
 import { rhythm } from '@/utils/typography';
+import orderEmperors from '@/utils/orderEmperors';
 
 interface Rank {
   slug: string;
@@ -29,21 +30,25 @@ const spacedOutPage = {
 
 export default (props: RankingProps) => {
   const { top10, mentions, bottom5 } = props.data.dataJson;
-  const emperors: Emperor[] = props.data.allEmperorsJson.nodes;
+  const allEmperors: Emperor[] = props.data.allEmperorsJson.nodes;
 
   function mapToRanked(x: Rank) {
-    const emp = emperors.find((e) => e.slug === `/${x.slug}/`);
+    const emp = allEmperors.find((e) => e.slug === `/${x.slug}/`);
     return emp ? ({ ...x, ...emp } as RankedEmperor) : null;
   }
 
   const topEmperors = top10.map(mapToRanked).filter(filterFalsey);
-  const mentionsEmperors = mentions.map(mapToRanked).filter(filterFalsey);
   const bottomEmperors = bottom5.map(mapToRanked).filter(filterFalsey);
-  const rankedEmperors = [
-    ...topEmperors,
-    ...mentionsEmperors,
-    ...bottomEmperors
-  ].sort((a, b) => a.name.localeCompare(b.name));
+  const mentionsEmperors = orderEmperors(
+    mentions.map(mapToRanked).filter(filterFalsey),
+    'name',
+    false
+  );
+
+  const pageEmperors = [...topEmperors, ...mentionsEmperors, ...bottomEmperors];
+  const goToEmperors = pageEmperors.sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
 
   return (
     <Layout>
@@ -52,7 +57,7 @@ export default (props: RankingProps) => {
         description="My personal opinion on the best and worst Roman Emperors."
       />
 
-      <GoTo data={rankedEmperors} />
+      <GoTo data={goToEmperors} />
       <Listing
         title="Top 10 Roman Emperors"
         descriptionContent={
@@ -79,7 +84,6 @@ export default (props: RankingProps) => {
           </p>
         }
         data={mentionsEmperors}
-        sortKey={'name'}
         grouping={(x) => 'Emperors'}
         showInSingleTable
       />
