@@ -107,3 +107,10 @@ $brilliant-lavender: #f4bbff;
     }
   }
 }
+
+.scroll-top.scroll-top::before {
+  top: 25%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

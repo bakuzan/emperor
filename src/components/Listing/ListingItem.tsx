@@ -54,7 +54,7 @@ export default function ListingItem({
         style={{ paddingLeft: showGroup ? undefined : rhythm(1 / 2) }}
         column-title="Name"
       >
-        <div style={{ display: 'flex' }}>
+        <div className="image-wrapper">
           <Img style={{ flex: `0 0 96px` }} {...data.image.childImageSharp} />
           <div>
             <Link style={{ margin: `0 ${rhythm(1 / 4)}` }} to={data.slug}>
