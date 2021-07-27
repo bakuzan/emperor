@@ -41,7 +41,7 @@ export default (props: RankingProps) => {
   const bottomEmperors = bottom5.map(mapToRanked).filter(filterFalsey);
   const mentionsEmperors = orderEmperors(
     mentions.map(mapToRanked).filter(filterFalsey),
-    'name',
+    'daysSinceReignEnd',
     false
   );
 
@@ -78,9 +78,10 @@ export default (props: RankingProps) => {
         title="Honourable mentions"
         descriptionContent={
           <p style={spacedOutPage}>
-            The following Emperors didn't make the cut for a place in the Top
-            10. However, they still made an impression on me and would be first
-            in line to make the jump to the top 10.
+            Appearing here in chronological order are Emperors that didn't make
+            the cut for a place in the Top 10.
+            <br /> However, they still made an impression on me and would be
+            first in line to move up.
           </p>
         }
         data={mentionsEmperors}

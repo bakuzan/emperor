@@ -108,9 +108,12 @@ $brilliant-lavender: #f4bbff;
   }
 }
 
-.scroll-top.scroll-top::before {
-  top: 25%;
-  left: 0;
-  right: 0;
-  bottom: 0;
+@media only screen and (max-width: 480px),
+  (min-device-width: 479px) and (max-device-width: 767px) {
+  .scroll-top.scroll-top::before {
+    top: 25%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 }
