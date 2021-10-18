@@ -126,6 +126,7 @@ export const query = graphql`
         reignEnd
         reignLengthInDays
         birthplace
+        daysSinceReignEnd
         empire
       }
     }
