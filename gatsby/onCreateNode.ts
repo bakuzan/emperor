@@ -30,28 +30,39 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
     });
 
     if (image) {
-      nodeItem.image___NODE = image.id;
+      createNodeField({
+        node,
+        name: 'imageFile',
+        value: image.id
+      });
     }
 
     const d = new Date();
-    const today = `${d.getDate()} ${
-      monthNames[d.getMonth()]
-    } ${d.getFullYear()}`;
+    const month = monthNames[d.getMonth()];
+    const today = `${d.getDate()} ${month} ${d.getFullYear()}`;
 
-    nodeItem.daysSinceReignStart = calculateTimespan(
-      nodeItem.reignStart,
-      today
-    );
-
-    nodeItem.daysSinceReignEnd = calculateTimespan(nodeItem.reignEnd, today);
-
-    nodeItem.reignLengthInDays = calculateTimespan(
-      nodeItem.reignStart,
-      nodeItem.reignEnd
-    );
+    createNodeField({
+      node,
+      name: 'daysSinceReignStart',
+      value: calculateTimespan(nodeItem.reignStart, today)
+    });
+    createNodeField({
+      node,
+      name: 'daysSinceReignEnd',
+      value: calculateTimespan(nodeItem.reignEnd, today)
+    });
+    createNodeField({
+      node,
+      name: 'reignLengthInDays',
+      value: calculateTimespan(nodeItem.reignStart, nodeItem.reignEnd)
+    });
 
     // Fix slug...
-    nodeItem.slug = `/${nodeItem.slug}/`;
+    createNodeField({
+      node,
+      name: 'slug',
+      value: `/${nodeItem.slug}/`
+    });
   }
 
   // Details pages

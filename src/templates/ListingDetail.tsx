@@ -67,7 +67,7 @@ export default function ListingDetail(props: ListingDetailProps) {
 }
 
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       fields {
@@ -86,7 +86,9 @@ export const query = graphql`
       succession
       reignStart
       reignEnd
-      reignLengthInDays
+      fields {
+        reignLengthInDays
+      }
     }
   }
 `;

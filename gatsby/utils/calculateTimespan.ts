@@ -71,5 +71,5 @@ export default function calculateTimespan(from: string, to: string) {
   }
 
   // in days
-  return years * A_YEAR + months * A_MONTH + days;
+  return Math.floor(years * A_YEAR + months * A_MONTH + days);
 }

@@ -5,7 +5,17 @@ module.exports = {
   plugins: [
     `gatsby-plugin-typescript`,
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sass',
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        cssLoaderOptions: {
+          esModule: false,
+          modules: {
+            namedExport: false
+          }
+        }
+      }
+    },
     `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
