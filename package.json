@@ -51,7 +51,7 @@
     "gatsby-transformer-sharp": "^4.8.0",
     "meiko": "file:../meiko/build",
     "nano-css": "^5.3.4",
-    "node-sass": "^6.0.1",
+    "node-sass": "^7.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
