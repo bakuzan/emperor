@@ -76,7 +76,7 @@ export default (props: HomeProps) => {
       <Listing
         title={title}
         data={filteredItems}
-        grouping={(x) => 'Emperors'}
+        grouping={() => 'Emperors'}
         showInSingleTable
         isSortDesc={isDesc}
         sortKey={sortKey}
@@ -98,9 +98,7 @@ export const query = graphql`
         name
         image {
           childImageSharp {
-            fixed(width: 100, height: 144) {
-              ...GatsbyImageSharpFixed
-            }
+            gatsbyImageData(width: 100, height: 144, layout: FIXED)
           }
         }
         house

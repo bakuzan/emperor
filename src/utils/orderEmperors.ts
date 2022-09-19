@@ -42,5 +42,5 @@ export default function orderEmperors<T extends Emperor>(
   isDesc: boolean
 ) {
   const args = orders.get(key) as EmperorOrder;
-  return orderBy(list, args.props, args.orders(isDesc));
+  return orderBy(list, args.props, args.orders(isDesc)) as T[];
 }

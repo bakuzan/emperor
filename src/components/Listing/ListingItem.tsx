@@ -2,10 +2,10 @@ import './ListingItem.scss';
 import classNames from 'classnames';
 import React from 'react';
 import { Link } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 import getOrdinalSuffix from 'ayaka/getOrdinalSuffix';
-import { Emperor } from '@/interfaces/Emperor';
+import { type Emperor } from '@/interfaces/Emperor';
 import { rhythm } from '@/utils/typography';
 import { displayReignLength } from '@/utils/displayReignLength';
 import slugToIdentifier from '@/utils/slugToIdentifier';
@@ -28,6 +28,8 @@ export default function ListingItem({
   preventIdPropRender
 }: ListingItemProps) {
   const hash = preventIdPropRender ? undefined : slugToIdentifier(data.slug);
+  const image = getImage(data.image);
+  const hasImage = !!image;
 
   return (
     <tr id={hash} className="emperor">
@@ -55,7 +57,13 @@ export default function ListingItem({
         column-title="Name"
       >
         <div className="image-wrapper">
-          <Img style={{ flex: `0 0 96px` }} {...data.image.childImageSharp} />
+          {hasImage && (
+            <GatsbyImage
+              style={{ flex: '0 0 96px' }}
+              image={image}
+              alt={data.name}
+            />
+          )}
           <div>
             <Link style={{ margin: `0 ${rhythm(1 / 4)}` }} to={data.slug}>
               {data.name}

@@ -1,12 +1,10 @@
-import { GatsbyImageProps } from 'gatsby-image';
+import { type ImageDataLike } from 'gatsby-plugin-image';
 
 export interface Emperor {
   id: string;
   slug: string;
   name: string;
-  image: {
-    childImageSharp: GatsbyImageProps;
-  };
+  image: ImageDataLike;
   house: string;
   succession: string;
   reignStart: string;
