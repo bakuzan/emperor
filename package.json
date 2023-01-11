@@ -43,7 +43,7 @@
     "gatsby-plugin-typography": "^4.23.0",
     "gatsby-source-filesystem": "^4.23.0",
     "gatsby-transformer-json": "^4.23.0",
-    "gatsby-transformer-remark": "^5.23.0",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^4.23.00",
     "meiko": "file:../meiko/build",
     "nano-css": "^5.3.5",
