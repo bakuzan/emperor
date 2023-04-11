@@ -12,6 +12,7 @@
     "url": "https://github.com/bakuzan/emperor/issues"
   },
   "scripts": {
+    "prepare": "husky install",
     "develop": "gatsby develop",
     "start": "yarn clean && gatsby develop",
     "build": "gatsby build",
@@ -27,11 +28,6 @@
     "{,src,gatsby}/**/*.{js}": [
       "prettier --write"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "dependencies": {
     "ayaka": "file:../ayaka/build",
@@ -69,7 +65,7 @@
     "@types/typography": "^0.16.4",
     "babel-preset-gatsby": "^2.8.2",
     "gh-pages": "^2.2.0",
-    "husky": "^7.0.4",
+    "husky": "^8.0.3",
     "lint-staged": "^12.3.4",
     "prettier": "^2.5.1",
     "ts-node": "^10.5.0",
