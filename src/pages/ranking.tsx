@@ -85,7 +85,7 @@ export default (props: RankingProps) => {
           </p>
         }
         data={mentionsEmperors}
-        grouping={(x) => 'Emperors'}
+        grouping={() => 'Emperors'}
         showInSingleTable
       />
 
@@ -115,9 +115,7 @@ export const query = graphql`
         name
         image {
           childImageSharp {
-            fixed(width: 100, height: 144) {
-              ...GatsbyImageSharpFixed
-            }
+            gatsbyImageData(width: 100, height: 144, layout: FIXED)
           }
         }
         house

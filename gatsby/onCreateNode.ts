@@ -8,7 +8,6 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
   node,
   getNode,
   actions,
-  store,
   cache
 }) => {
   const { createNodeField } = actions;
@@ -17,16 +16,14 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
   if (node.internal.type === 'EmperorsJson') {
     const { createNode } = actions;
 
-    const nodeItem = node as any;
+    const nodeItem = node as Record<string, string>;
     const nodeImage = node.image as string;
 
     const image = await createRemoteFileNode({
       url: nodeImage,
-      store,
       cache,
       createNode,
-      createNodeId: (id: string) => `image-${id}`,
-      reporter: {} // make typescript behave.
+      createNodeId: (id: string) => `image-${id}`
     });
 
     if (image) {
@@ -70,7 +67,7 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
     const relativeFilePath = createFilePath({
       node,
       getNode,
-      basePath: `content/data/`
+      basePath: 'content/data/'
     });
 
     createNodeField({

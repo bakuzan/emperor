@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["gatsby/**/*", "src/**/*", "types/**/*"],
+  "exclude": ["node_modules", "dist", "build"]
+}
