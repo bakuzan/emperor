@@ -15,19 +15,17 @@
     "prepare": "husky install",
     "develop": "gatsby develop",
     "start": "npm run clean && gatsby develop",
-    "build": "gatsby build",
+    "build": "gatsby build --prefix-paths",
     "clean": "gatsby clean",
     "pretty": "lint-staged",
     "lint": "eslint -c .eslintrc.js --ext .ts,.tsx --fix",
-    "deploy": "npm run clean && npm run build --prefix-paths && npm run deploy:existing",
+    "deploy": "npm run clean && npm run build && npm run deploy:existing",
     "deploy:existing": "rm -rf node_modules/.cache/gh-pages && gh-pages -d public"
   },
   "lint-staged": {
-    "{,src,gatsby}/**/*.{ts,tsx}": [
-      "npm run lint"
-    ],
     "{,src,gatsby}/**/*.{ts,tsx,js}": [
-      "prettier --write"
+      "prettier --write",
+      "npm run lint"
     ]
   },
   "dependencies": {

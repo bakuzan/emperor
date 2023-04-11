@@ -16,6 +16,7 @@ import preprocessScrapeHtml from '@/utils/preprocessScrapeHtml';
 
 import './ListingDetail.scss';
 
+/* eslint-disable-next-line @typescript-eslint/quotes */
 const MarkdownSplitPoint = `[comment]: # 'breakpoint'`;
 
 type MutliQuery = Query<EmperorDetail, 'markdownRemark'> &
@@ -36,7 +37,7 @@ export default function ListingDetail(props: ListingDetailProps) {
       <ListingNavigation {...pageContext}>
         <h2
           style={{
-            color: `var(--text-colour)`,
+            color: 'var(--text-colour)',
             margin: rhythm(1 / 4)
           }}
         >
@@ -86,9 +87,7 @@ export const query = graphql`
       succession
       reignStart
       reignEnd
-      fields {
-        reignLengthInDays
-      }
+      reignLengthInDays
     }
   }
 `;
