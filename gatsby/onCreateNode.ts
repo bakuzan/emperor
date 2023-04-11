@@ -23,7 +23,8 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
       url: nodeImage,
       cache,
       createNode,
-      createNodeId: (id: string) => `image-${id}`
+      createNodeId: (id: string) => `image-${id}`,
+      name: nodeItem.slug
     });
 
     if (image) {

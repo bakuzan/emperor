@@ -19,7 +19,8 @@
     "clean": "gatsby clean",
     "pretty": "lint-staged",
     "lint": "eslint -c .eslintrc.js --ext .ts,.tsx --fix",
-    "deploy": "npm run clean && npm run build --prefix-paths && gh-pages -d public"
+    "deploy": "npm run clean && npm run build --prefix-paths && npm run deploy:existing",
+    "deploy:existing": "rm -rf node_modules/.cache/gh-pages && gh-pages -d public"
   },
   "lint-staged": {
     "{,src,gatsby}/**/*.{ts,tsx}": [
@@ -72,7 +73,7 @@
     "eslint-plugin-jsdoc": "^39.9.1",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-prettier": "^4.2.1",
-    "gh-pages": "^4.0.0",
+    "gh-pages": "^5.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.1",
     "prettier": "^2.8.7",
