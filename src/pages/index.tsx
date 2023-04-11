@@ -72,7 +72,7 @@ export default (props: HomeProps) => {
 
 export const query = graphql`
   query EmperorsQuery {
-    allEmperorsJson(sort: { order: DESC, fields: daysSinceReignStart }) {
+    allEmperorsJson(sort: { daysSinceReignStart: DESC }) {
       nodes {
         id
         slug

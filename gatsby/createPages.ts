@@ -11,10 +11,13 @@ type AllQuery<T, K extends string> = {
   };
 };
 
-function findPage(items: any, index: number, pages: any) {
+type EmperorItem = { slug: string };
+type Page = { fields: { slug: string } };
+
+function findPage(items: EmperorItem[], index: number, pages: Page[]) {
   const item = items[index];
   const itemSlug = item.slug;
-  return pages.find((x: any) => x.fields.slug.includes(itemSlug)) ?? null;
+  return pages.find((x) => x.fields.slug.includes(itemSlug)) ?? null;
 }
 
 export const createPages: GatsbyNode['createPages'] = async ({
@@ -23,9 +26,9 @@ export const createPages: GatsbyNode['createPages'] = async ({
 }) => {
   const { createPage } = actions;
 
-  const json = await graphql<AllQuery<any, 'allEmperorsJson'>>(`
+  const json = await graphql<AllQuery<EmperorItem, 'allEmperorsJson'>>(`
     {
-      allEmperorsJson(sort: { order: DESC, fields: daysSinceReignStart }) {
+      allEmperorsJson(sort: { daysSinceReignStart: DESC }) {
         edges {
           node {
             slug
@@ -35,7 +38,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
     }
   `);
 
-  const markdown = await graphql<AllQuery<any, 'allMarkdownRemark'>>(`
+  const markdown = await graphql<AllQuery<Page, 'allMarkdownRemark'>>(`
     {
       allMarkdownRemark {
         edges {
@@ -53,8 +56,11 @@ export const createPages: GatsbyNode['createPages'] = async ({
     throw json.errors || markdown.errors || 'Failed to create pages';
   }
 
-  const items = json.data?.allEmperorsJson.edges.map((x) => x.node) ?? [];
-  const pages = markdown.data?.allMarkdownRemark.edges.map((x) => x.node) ?? [];
+  const items: EmperorItem[] =
+    json.data?.allEmperorsJson.edges.map((x) => x.node) ?? [];
+
+  const pages: Page[] =
+    markdown.data?.allMarkdownRemark.edges.map((x) => x.node) ?? [];
 
   const maxIndex = pages.length - 1;
   const listingDetailTemplate = path.resolve(
